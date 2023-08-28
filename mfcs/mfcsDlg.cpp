@@ -67,31 +67,31 @@ BEGIN_MESSAGE_MAP(CmfcsDlg, CDialogEx)
 	ON_WM_QUERYDRAGICON()
 	ON_BN_CLICKED(IDC_START, &CmfcsDlg::OnBnClickedStart)
 	//数字按钮
-	ON_BN_CLICKED(IDC_BUTTON1, &CmfcsDlg::on_num)
-	ON_BN_CLICKED(IDC_BUTTON2, &CmfcsDlg::on_num)
-	ON_BN_CLICKED(IDC_BUTTON3, &CmfcsDlg::on_num)
-	ON_BN_CLICKED(IDC_BUTTON4, &CmfcsDlg::on_num)
-	ON_BN_CLICKED(IDC_BUTTON5, &CmfcsDlg::on_num)
-	ON_BN_CLICKED(IDC_BUTTON6, &CmfcsDlg::on_num)
-	ON_BN_CLICKED(IDC_BUTTON7, &CmfcsDlg::on_num)
-	ON_BN_CLICKED(IDC_BUTTON8, &CmfcsDlg::on_num)
-	ON_BN_CLICKED(IDC_BUTTON9, &CmfcsDlg::on_num)
-	ON_BN_CLICKED(IDC_BUTTON10, &CmfcsDlg::on_num)
-	ON_BN_CLICKED(IDC_BUTTON11, &CmfcsDlg::on_num)
-	ON_BN_CLICKED(IDC_BUTTON12, &CmfcsDlg::on_num)
-	ON_BN_CLICKED(IDC_BUTTON13, &CmfcsDlg::on_num)
-	ON_BN_CLICKED(IDC_BUTTON14, &CmfcsDlg::on_num)
-	ON_BN_CLICKED(IDC_BUTTON15, &CmfcsDlg::on_num)
-	ON_BN_CLICKED(IDC_BUTTON16, &CmfcsDlg::on_num)
-	ON_BN_CLICKED(IDC_BUTTON17, &CmfcsDlg::on_num)
-	ON_BN_CLICKED(IDC_BUTTON18, &CmfcsDlg::on_num)
-	ON_BN_CLICKED(IDC_BUTTON19, &CmfcsDlg::on_num)
-	ON_BN_CLICKED(IDC_BUTTON20, &CmfcsDlg::on_num)
-	ON_BN_CLICKED(IDC_BUTTON21, &CmfcsDlg::on_num)
-	ON_BN_CLICKED(IDC_BUTTON22, &CmfcsDlg::on_num)
-	ON_BN_CLICKED(IDC_BUTTON23, &CmfcsDlg::on_num)
-	ON_BN_CLICKED(IDC_BUTTON24, &CmfcsDlg::on_num)
-	ON_BN_CLICKED(IDC_BUTTON25, &CmfcsDlg::on_num)
+	ON_BN_CLICKED(IDC_MFCBUTTON1, &CmfcsDlg::on_num)
+	ON_BN_CLICKED(IDC_MFCBUTTON2, &CmfcsDlg::on_num)
+	ON_BN_CLICKED(IDC_MFCBUTTON3, &CmfcsDlg::on_num)
+	ON_BN_CLICKED(IDC_MFCBUTTON4, &CmfcsDlg::on_num)
+	ON_BN_CLICKED(IDC_MFCBUTTON5, &CmfcsDlg::on_num)
+	ON_BN_CLICKED(IDC_MFCBUTTON6, &CmfcsDlg::on_num)
+	ON_BN_CLICKED(IDC_MFCBUTTON7, &CmfcsDlg::on_num)
+	ON_BN_CLICKED(IDC_MFCBUTTON8, &CmfcsDlg::on_num)
+	ON_BN_CLICKED(IDC_MFCBUTTON9, &CmfcsDlg::on_num)
+	ON_BN_CLICKED(IDC_MFCBUTTON10, &CmfcsDlg::on_num)
+	ON_BN_CLICKED(IDC_MFCBUTTON11, &CmfcsDlg::on_num)
+	ON_BN_CLICKED(IDC_MFCBUTTON12, &CmfcsDlg::on_num)
+	ON_BN_CLICKED(IDC_MFCBUTTON13, &CmfcsDlg::on_num)
+	ON_BN_CLICKED(IDC_MFCBUTTON14, &CmfcsDlg::on_num)
+	ON_BN_CLICKED(IDC_MFCBUTTON15, &CmfcsDlg::on_num)
+	ON_BN_CLICKED(IDC_MFCBUTTON16, &CmfcsDlg::on_num)
+	ON_BN_CLICKED(IDC_MFCBUTTON17, &CmfcsDlg::on_num)
+	ON_BN_CLICKED(IDC_MFCBUTTON18, &CmfcsDlg::on_num)
+	ON_BN_CLICKED(IDC_MFCBUTTON19, &CmfcsDlg::on_num)
+	ON_BN_CLICKED(IDC_MFCBUTTON20, &CmfcsDlg::on_num)
+	ON_BN_CLICKED(IDC_MFCBUTTON21, &CmfcsDlg::on_num)
+	ON_BN_CLICKED(IDC_MFCBUTTON22, &CmfcsDlg::on_num)
+	ON_BN_CLICKED(IDC_MFCBUTTON23, &CmfcsDlg::on_num)
+	ON_BN_CLICKED(IDC_MFCBUTTON24, &CmfcsDlg::on_num)
+	ON_BN_CLICKED(IDC_MFCBUTTON25, &CmfcsDlg::on_num)
 END_MESSAGE_MAP()
 
 
@@ -206,45 +206,18 @@ void CmfcsDlg::dis_bn()
 	// TODO: 在此处添加实现代码.
 	CFont *fn = new CFont;
 	fn->CreatePointFont(400, TEXT("宋体"), NULL);
-	for (int i = 1000; i <= 1024; i++)
+	/*CMFCButton* bn = (CMFCButton*)GetDlgItem(IDC_MFCBUTTON2);
+	bn->SetFaceColor(RGB(0, 255, 0));
+	bn->m_bTransparent = FALSE;
+	bn->m_bDontUseWinXPTheme = TRUE;*/
+	for (int i = 1029; i <= 1053; i++)
 	{
-		//id =1000~1024
+		//id =1029~1053
 		GetDlgItem(i)->EnableWindow(FALSE);
 		GetDlgItem(i)->SetFont(fn);
 	}
 
-	/*GetDlgItem(IDC_BUTTON1)->EnableWindow(FALSE);
-	GetDlgItem(IDC_BUTTON1)->SetFont(fn);
 
-	GetDlgItem(IDC_BUTTON2)->EnableWindow(FALSE);
-	GetDlgItem(IDC_BUTTON2)->SetFont(fn);
-	GetDlgItem(IDC_BUTTON3)->EnableWindow(FALSE);
-	GetDlgItem(IDC_BUTTON3)->SetFont(fn);
-
-	GetDlgItem(IDC_BUTTON4)->EnableWindow(FALSE);
-	GetDlgItem(IDC_BUTTON4)->SetFont(fn);
-
-	GetDlgItem(IDC_BUTTON5)->EnableWindow(FALSE);
-	GetDlgItem(IDC_BUTTON6)->EnableWindow(FALSE);
-	GetDlgItem(IDC_BUTTON7)->EnableWindow(FALSE);
-	GetDlgItem(IDC_BUTTON8)->EnableWindow(FALSE);
-	GetDlgItem(IDC_BUTTON9)->EnableWindow(FALSE);
-	GetDlgItem(IDC_BUTTON10)->EnableWindow(FALSE);
-	GetDlgItem(IDC_BUTTON11)->EnableWindow(FALSE);
-	GetDlgItem(IDC_BUTTON12)->EnableWindow(FALSE);
-	GetDlgItem(IDC_BUTTON13)->EnableWindow(FALSE);
-	GetDlgItem(IDC_BUTTON14)->EnableWindow(FALSE);
-	GetDlgItem(IDC_BUTTON15)->EnableWindow(FALSE);
-	GetDlgItem(IDC_BUTTON16)->EnableWindow(FALSE);
-	GetDlgItem(IDC_BUTTON17)->EnableWindow(FALSE);
-	GetDlgItem(IDC_BUTTON18)->EnableWindow(FALSE);
-	GetDlgItem(IDC_BUTTON19)->EnableWindow(FALSE);
-	GetDlgItem(IDC_BUTTON20)->EnableWindow(FALSE);
-	GetDlgItem(IDC_BUTTON21)->EnableWindow(FALSE);
-	GetDlgItem(IDC_BUTTON22)->EnableWindow(FALSE);
-	GetDlgItem(IDC_BUTTON23)->EnableWindow(FALSE);
-	GetDlgItem(IDC_BUTTON24)->EnableWindow(FALSE);
-	GetDlgItem(IDC_BUTTON25)->EnableWindow(FALSE);*/
 }
 
 
@@ -252,31 +225,12 @@ void CmfcsDlg::dis_bn()
 void CmfcsDlg::init_bn()
 {
 	// TODO: 在此处添加实现代码.
-	GetDlgItem(IDC_BUTTON1)->EnableWindow(TRUE);
-	GetDlgItem(IDC_BUTTON2)->EnableWindow(TRUE);
-	GetDlgItem(IDC_BUTTON3)->EnableWindow(TRUE);
-	GetDlgItem(IDC_BUTTON4)->EnableWindow(TRUE);
-	GetDlgItem(IDC_BUTTON5)->EnableWindow(TRUE);
-	GetDlgItem(IDC_BUTTON6)->EnableWindow(TRUE);
-	GetDlgItem(IDC_BUTTON7)->EnableWindow(TRUE);
-	GetDlgItem(IDC_BUTTON8)->EnableWindow(TRUE);
-	GetDlgItem(IDC_BUTTON9)->EnableWindow(TRUE);
-	GetDlgItem(IDC_BUTTON10)->EnableWindow(TRUE);
-	GetDlgItem(IDC_BUTTON11)->EnableWindow(TRUE);
-	GetDlgItem(IDC_BUTTON12)->EnableWindow(TRUE);
-	GetDlgItem(IDC_BUTTON13)->EnableWindow(TRUE);
-	GetDlgItem(IDC_BUTTON14)->EnableWindow(TRUE);
-	GetDlgItem(IDC_BUTTON15)->EnableWindow(TRUE);
-	GetDlgItem(IDC_BUTTON16)->EnableWindow(TRUE);
-	GetDlgItem(IDC_BUTTON17)->EnableWindow(TRUE);
-	GetDlgItem(IDC_BUTTON18)->EnableWindow(TRUE);
-	GetDlgItem(IDC_BUTTON19)->EnableWindow(TRUE);
-	GetDlgItem(IDC_BUTTON20)->EnableWindow(TRUE);
-	GetDlgItem(IDC_BUTTON21)->EnableWindow(TRUE);
-	GetDlgItem(IDC_BUTTON22)->EnableWindow(TRUE);
-	GetDlgItem(IDC_BUTTON23)->EnableWindow(TRUE);
-	GetDlgItem(IDC_BUTTON24)->EnableWindow(TRUE);
-	GetDlgItem(IDC_BUTTON25)->EnableWindow(TRUE);
+	for (int i = 1029; i <= 1053; i++)
+	{
+		//id =1029~1053
+		GetDlgItem(i)->EnableWindow(TRUE);
+	}
+
 
 	int shunxu[25], luanxu[25], i, j;
 	CString s;
@@ -295,31 +249,14 @@ void CmfcsDlg::init_bn()
 		}
 	}
 	i = 0;
-	SetDlgItemText(IDC_BUTTON1, (s.Format(L"%d", luanxu[i++]), s));
-	SetDlgItemText(IDC_BUTTON2, (s.Format(L"%d", luanxu[i++]), s));
-	SetDlgItemText(IDC_BUTTON3, (s.Format(L"%d", luanxu[i++]), s));
-	SetDlgItemText(IDC_BUTTON4, (s.Format(L"%d", luanxu[i++]), s));
-	SetDlgItemText(IDC_BUTTON5, (s.Format(L"%d", luanxu[i++]), s));
-	SetDlgItemText(IDC_BUTTON6, (s.Format(L"%d", luanxu[i++]), s));
-	SetDlgItemText(IDC_BUTTON7, (s.Format(L"%d", luanxu[i++]), s));
-	SetDlgItemText(IDC_BUTTON8, (s.Format(L"%d", luanxu[i++]), s));
-	SetDlgItemText(IDC_BUTTON9, (s.Format(L"%d", luanxu[i++]), s));
-	SetDlgItemText(IDC_BUTTON10, (s.Format(L"%d", luanxu[i++]), s));
-	SetDlgItemText(IDC_BUTTON11, (s.Format(L"%d", luanxu[i++]), s));
-	SetDlgItemText(IDC_BUTTON12, (s.Format(L"%d", luanxu[i++]), s));
-	SetDlgItemText(IDC_BUTTON13, (s.Format(L"%d", luanxu[i++]), s));
-	SetDlgItemText(IDC_BUTTON14, (s.Format(L"%d", luanxu[i++]), s));
-	SetDlgItemText(IDC_BUTTON15, (s.Format(L"%d", luanxu[i++]), s));
-	SetDlgItemText(IDC_BUTTON16, (s.Format(L"%d", luanxu[i++]), s));
-	SetDlgItemText(IDC_BUTTON17, (s.Format(L"%d", luanxu[i++]), s));
-	SetDlgItemText(IDC_BUTTON18, (s.Format(L"%d", luanxu[i++]), s));
-	SetDlgItemText(IDC_BUTTON19, (s.Format(L"%d", luanxu[i++]), s));
-	SetDlgItemText(IDC_BUTTON20, (s.Format(L"%d", luanxu[i++]), s));
-	SetDlgItemText(IDC_BUTTON21, (s.Format(L"%d", luanxu[i++]), s));
-	SetDlgItemText(IDC_BUTTON22, (s.Format(L"%d", luanxu[i++]), s));
-	SetDlgItemText(IDC_BUTTON23, (s.Format(L"%d", luanxu[i++]), s));
-	SetDlgItemText(IDC_BUTTON24, (s.Format(L"%d", luanxu[i++]), s));
-	SetDlgItemText(IDC_BUTTON25, (s.Format(L"%d", luanxu[i++]), s));
+	for (int n = 1029; n <= 1053; n++)
+	{
+		//id =1029~1053
+		SetDlgItemText(n, (s.Format(L"%d", luanxu[i++]), s));
+		
+	}
+
+	
 }
 
 
@@ -339,15 +276,42 @@ void CmfcsDlg::on_num()
 {
 	// TODO: 在此处添加实现代码.
 	CString m_numT;
-	GetDlgItemText(GetFocus()->GetDlgCtrlID(), m_numT);
+	CMFCButton* bn = (CMFCButton*)GetDlgItem(GetFocus()->GetDlgCtrlID());
+	//GetDlgItemText(GetFocus()->GetDlgCtrlID(), m_numT);
+	GetDlgItemText(bn->GetDlgCtrlID(), m_numT);
 
-	
+	 
 	int m_num = _ttoi(m_numT);
-	if (m_num == num)
+	if (m_num != num)
 	{
-		GetDlgItem(GetFocus()->GetDlgCtrlID())->EnableWindow(FALSE);
+		//CMFCButton* bn = (CMFCButton*)GetDlgItem(GetFocus()->GetDlgCtrlID());
+		//GetDlgItem(GetFocus()->GetDlgCtrlID())->EnableWindow(FALSE);
+
+		bn->SetFaceColor(RGB(255, 0, 0));
+		bn->m_bTransparent = FALSE;
+		bn->m_bDontUseWinXPTheme = TRUE;
+		Invalidate();
+
+	}
+	else//错误变色
+	{
+		//CMFCButton* bn = (CMFCButton*)GetDlgItem(GetFocus()->GetDlgCtrlID());
+		bn->EnableWindow(FALSE);
+		for (int n = 1029; n <= 1053; n++)
+		{
+			//id =1029~1053
+			CMFCButton* bnall = (CMFCButton*)GetDlgItem(n);
+			bnall->m_bTransparent =TRUE;
+			bnall->m_bDontUseWinXPTheme = FALSE;
+
+		}
+
+		Invalidate();
 		num++;
 	}
+
+		
+	
 	if (num == 26)
 	{
 		end = clock();
