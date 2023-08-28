@@ -276,22 +276,42 @@ void CmfcsDlg::on_num()
 {
 	// TODO: 在此处添加实现代码.
 	CString m_numT;
-	GetDlgItemText(GetFocus()->GetDlgCtrlID(), m_numT);
+	CMFCButton* bn = (CMFCButton*)GetDlgItem(GetFocus()->GetDlgCtrlID());
+	//GetDlgItemText(GetFocus()->GetDlgCtrlID(), m_numT);
+	GetDlgItemText(bn->GetDlgCtrlID(), m_numT);
 
-	
+	 
 	int m_num = _ttoi(m_numT);
-	if (m_num == num)
-	{
-		GetDlgItem(GetFocus()->GetDlgCtrlID())->EnableWindow(FALSE);
-		num++;
-	}
 	if (m_num != num)
 	{
-		/*CMFCButton* bn = (CMFCButton*)GetDlgItem(GetFocus()->GetDlgCtrlID());
-		bn->SetFaceColor(RGB(0, 255, 0));
+		//CMFCButton* bn = (CMFCButton*)GetDlgItem(GetFocus()->GetDlgCtrlID());
+		//GetDlgItem(GetFocus()->GetDlgCtrlID())->EnableWindow(FALSE);
+
+		bn->SetFaceColor(RGB(255, 0, 0));
 		bn->m_bTransparent = FALSE;
-		bn->m_bDontUseWinXPTheme = TRUE;*/
+		bn->m_bDontUseWinXPTheme = TRUE;
+		Invalidate();
+
 	}
+	else//错误变色
+	{
+		//CMFCButton* bn = (CMFCButton*)GetDlgItem(GetFocus()->GetDlgCtrlID());
+		bn->EnableWindow(FALSE);
+		for (int n = 1029; n <= 1053; n++)
+		{
+			//id =1029~1053
+			CMFCButton* bnall = (CMFCButton*)GetDlgItem(n);
+			bnall->m_bTransparent =TRUE;
+			bnall->m_bDontUseWinXPTheme = FALSE;
+
+		}
+
+		Invalidate();
+		num++;
+	}
+
+		
+	
 	if (num == 26)
 	{
 		end = clock();
