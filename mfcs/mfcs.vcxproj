@@ -209,6 +209,13 @@
   <ItemGroup>
     <Image Include="res\mfcs.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Media Include="res\bgm.wav" />
+    <Media Include="res\bn.mp3" />
+    <Media Include="res\bn.wav" />
+    <Media Include="res\bn2.wav" />
+    <Media Include="res\er.wav" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

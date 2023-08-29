@@ -60,4 +60,19 @@
       <Filter>资源文件</Filter>
     </Image>
   </ItemGroup>
+  <ItemGroup>
+    <Media Include="res\bgm.wav">
+      <Filter>资源文件</Filter>
+    </Media>
+    <Media Include="res\bn.mp3" />
+    <Media Include="res\er.wav">
+      <Filter>资源文件</Filter>
+    </Media>
+    <Media Include="res\bn.wav">
+      <Filter>资源文件</Filter>
+    </Media>
+    <Media Include="res\bn2.wav">
+      <Filter>资源文件</Filter>
+    </Media>
+  </ItemGroup>
 </Project>

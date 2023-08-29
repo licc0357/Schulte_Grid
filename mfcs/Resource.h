@@ -9,6 +9,10 @@
 #define IDR_MAINFRAME                   128
 #define IDR_MENU1                       130
 #define IDR_MENUR                       133
+#define IDR_WAVE_BGM                    134
+#define IDR_WAVE_ER                     136
+#define IDR_WAVE1                       137
+#define IDR_WAVE_BN                     137
 #define IDC_START                       1025
 #define IDC_MFCBUTTON1                  1029
 #define IDC_MFCBUTTON3                  1030
@@ -44,7 +48,7 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        134
+#define _APS_NEXT_RESOURCE_VALUE        138
 #define _APS_NEXT_COMMAND_VALUE         32775
 #define _APS_NEXT_CONTROL_VALUE         1030
 #define _APS_NEXT_SYMED_VALUE           101

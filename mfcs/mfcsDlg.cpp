@@ -267,10 +267,16 @@ void CmfcsDlg::init_bn()
 void CmfcsDlg::OnBnClickedStart()
 {
 	// TODO: 在此添加控件通知处理程序代码
+	//PlaySound(MAKEINTRESOURCE(IDR_WAVE_BGM), NULL, SND_RESOURCE | SND_ASYNC|SND_LOOP);
+	mciSendString(L"open ./bgm.mp3 alias bgm", NULL, 0, NULL);
+	mciSendString(L"play bgm repeat", NULL, 0, NULL);
+
+
 	init_bn();
+	start = 1;
 	num = 1;
 	t0 = CTime::GetCurrentTime();
-	start = clock();
+	starttime = clock();
 	
 }
 
@@ -288,9 +294,11 @@ void CmfcsDlg::on_num()
 	int m_num = _ttoi(m_numT);
 	if (m_num != num)//错误变色
 	{
+		PlaySound(MAKEINTRESOURCE(IDR_WAVE_ER), NULL, SND_RESOURCE | SND_ASYNC);
+
 		//CMFCButton* bn = (CMFCButton*)GetDlgItem(GetFocus()->GetDlgCtrlID());
 		//GetDlgItem(GetFocus()->GetDlgCtrlID())->EnableWindow(FALSE);
-
+		//Beep(300,300);
 		bn->SetFaceColor(RGB(255, 0, 0));
 		bn->m_bTransparent = FALSE;
 		bn->m_bDontUseWinXPTheme = TRUE;
@@ -300,6 +308,9 @@ void CmfcsDlg::on_num()
 	}
 	else
 	{
+		Beep(800, 100);
+		//PlaySound(MAKEINTRESOURCE(IDR_WAVE_BN), NULL, SND_RESOURCE | SND_ASYNC);
+
 		//CMFCButton* bn = (CMFCButton*)GetDlgItem(GetFocus()->GetDlgCtrlID());
 		bn->EnableWindow(FALSE);
 		for (int n = 1029; n <= 1053; n++)
@@ -319,8 +330,8 @@ void CmfcsDlg::on_num()
 	
 	if (num == 26)
 	{
-		end = clock();
-		times = (double)(end - start)/CLOCKS_PER_SEC;
+		endtime = clock();
+		times = (double)(endtime - starttime)/CLOCKS_PER_SEC;
 		times -= timez;
 		CString str;
 		str.Format(TEXT("共用时%.2f秒\n失误%d次"), times,ernum);
@@ -333,22 +344,29 @@ void CmfcsDlg::OnContextMenu(CWnd* pWnd, CPoint point)
 {
 	//右键菜单
 	// TODO: 在此处添加消息处理程序代码
-	CMenu menuR;
-	menuR.LoadMenuW(IDR_MENUR);
-	if (zanTing)
+	if (start)
 	{
-		CMenu* pmenu = menuR.GetSubMenu(1);
-		pmenu->TrackPopupMenu(TPM_LEFTALIGN | TPM_RIGHTBUTTON, point.x, point.y, this);
+		CMenu menuR;
+		menuR.LoadMenuW(IDR_MENUR);
+		if (zanTing)
+		{
+			CMenu* pmenu = menuR.GetSubMenu(1);
+			pmenu->TrackPopupMenu(TPM_LEFTALIGN | TPM_RIGHTBUTTON, point.x, point.y, this);
+
+
+		}
+		else
+		{
+
+			CMenu* pmenu = menuR.GetSubMenu(0);
+			pmenu->TrackPopupMenu(TPM_LEFTALIGN | TPM_RIGHTBUTTON, point.x, point.y, this);
+
+		}
+
 
 
 	}
-	else
-	{
-		
-		CMenu* pmenu = menuR.GetSubMenu(0);
-		pmenu->TrackPopupMenu(TPM_LEFTALIGN | TPM_RIGHTBUTTON, point.x, point.y, this);
-
-	}
+	
 
 	
 }
@@ -361,6 +379,9 @@ void CmfcsDlg::OnZanting()
 	zanTing = 1;
 	zstart = clock();
 	dis_bn();
+	//MessageBeep(MB_ICONERROR);
+	Beep(800, 200);
+	//PlaySound(TEXT("SystemStart"), NULL, SND_ALIAS | SND_ASYNC);
 	MessageBox(TEXT("暂停成功！"));
 }
 
