@@ -52,6 +52,6 @@ public:
 
 	bool zanTing = 0;//是否暂停
 	time_t zstart, zend;//暂停开始 暂停结束
-
+	int ernum = 0;//错误次数
 	afx_msg void OnKaishi();
 };

@@ -286,7 +286,7 @@ void CmfcsDlg::on_num()
 
 	 
 	int m_num = _ttoi(m_numT);
-	if (m_num != num)
+	if (m_num != num)//错误变色
 	{
 		//CMFCButton* bn = (CMFCButton*)GetDlgItem(GetFocus()->GetDlgCtrlID());
 		//GetDlgItem(GetFocus()->GetDlgCtrlID())->EnableWindow(FALSE);
@@ -294,10 +294,11 @@ void CmfcsDlg::on_num()
 		bn->SetFaceColor(RGB(255, 0, 0));
 		bn->m_bTransparent = FALSE;
 		bn->m_bDontUseWinXPTheme = TRUE;
+		ernum++;
 		Invalidate();
 
 	}
-	else//错误变色
+	else
 	{
 		//CMFCButton* bn = (CMFCButton*)GetDlgItem(GetFocus()->GetDlgCtrlID());
 		bn->EnableWindow(FALSE);
@@ -309,7 +310,7 @@ void CmfcsDlg::on_num()
 			bnall->m_bDontUseWinXPTheme = FALSE;
 
 		}
-
+		
 		Invalidate();
 		num++;
 	}
@@ -322,7 +323,7 @@ void CmfcsDlg::on_num()
 		times = (double)(end - start)/CLOCKS_PER_SEC;
 		times -= timez;
 		CString str;
-		str.Format(TEXT("共用时%.2f秒"), times);
+		str.Format(TEXT("共用时%.2f秒\n失误%d次"), times,ernum);
 		MessageBox(str);
 	}
 }
