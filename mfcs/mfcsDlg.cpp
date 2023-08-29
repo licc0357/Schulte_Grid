@@ -96,6 +96,7 @@ BEGIN_MESSAGE_MAP(CmfcsDlg, CDialogEx)
 	ON_COMMAND(ID_ZanTing, &CmfcsDlg::OnZanting)
 	ON_UPDATE_COMMAND_UI(ID_ZanTing, &CmfcsDlg::OnUpdateZanting)
 	ON_COMMAND(ID_Kaishi, &CmfcsDlg::OnKaishi)
+	ON_WM_TIMER()
 END_MESSAGE_MAP()
 
 
@@ -270,7 +271,7 @@ void CmfcsDlg::OnBnClickedStart()
 	//PlaySound(MAKEINTRESOURCE(IDR_WAVE_BGM), NULL, SND_RESOURCE | SND_ASYNC|SND_LOOP);
 	mciSendString(L"open ./bgm.mp3 alias bgm", NULL, 0, NULL);
 	mciSendString(L"play bgm repeat", NULL, 0, NULL);
-
+	SetTimer(1, 1, NULL);
 
 	init_bn();
 	start = 1;
@@ -417,4 +418,19 @@ void CmfcsDlg::OnKaishi()
 	MessageBox(TEXT("开始成功！"));
 	zend = clock();
 	timez += (double)(zend - zstart) / CLOCKS_PER_SEC;
+}
+
+
+void CmfcsDlg::OnTimer(UINT_PTR nIDEvent)
+{
+	// TODO: 在此添加消息处理程序代码和/或调用默认值
+	CMFCButton* bns = (CMFCButton*)GetDlgItem(IDC_START);
+	endtime = clock();
+	times = (double)(endtime - starttime) / CLOCKS_PER_SEC;
+	times -= timez;
+	CString str;
+	str.Format(TEXT("当前用时%.2f秒\n失误%d次"), times, ernum);
+	bns->SetWindowTextW(str);
+	CDialogEx::OnTimer(nIDEvent);
+	
 }

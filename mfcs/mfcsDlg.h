@@ -58,4 +58,5 @@ public:
 	int ernum = 0;//错误次数
 	afx_msg void OnKaishi();
 	bool start = 0;//游戏是否开始
+	afx_msg void OnTimer(UINT_PTR nIDEvent);
 };
