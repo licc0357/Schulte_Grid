@@ -97,6 +97,8 @@ BEGIN_MESSAGE_MAP(CmfcsDlg, CDialogEx)
 	ON_UPDATE_COMMAND_UI(ID_ZanTing, &CmfcsDlg::OnUpdateZanting)
 	ON_COMMAND(ID_Kaishi, &CmfcsDlg::OnKaishi)
 	ON_WM_TIMER()
+	ON_COMMAND(ID_S_FONT, &CmfcsDlg::OnSFont)
+	ON_COMMAND(ID_DE_FONT, &CmfcsDlg::OnDeFont)
 END_MESSAGE_MAP()
 
 
@@ -134,7 +136,7 @@ BOOL CmfcsDlg::OnInitDialog()
 	//  执行此操作
 	SetIcon(m_hIcon, TRUE);			// 设置大图标
 	SetIcon(m_hIcon, FALSE);		// 设置小图标
-
+	fn->CreatePointFont(400, TEXT("微软雅黑"), NULL);
 	// TODO: 在此添加额外的初始化代码
 	//初始按钮不可用
 	dis_bn();
@@ -209,8 +211,7 @@ void CmfcsDlg::OnOK()
 void CmfcsDlg::dis_bn()
 {
 	// TODO: 在此处添加实现代码.
-	CFont *fn = new CFont;
-	fn->CreatePointFont(400, TEXT("宋体"), NULL);
+	
 	/*CMFCButton* bn = (CMFCButton*)GetDlgItem(IDC_MFCBUTTON2);
 	bn->SetFaceColor(RGB(0, 255, 0));
 	bn->m_bTransparent = FALSE;
@@ -272,12 +273,19 @@ void CmfcsDlg::OnBnClickedStart()
 	mciSendString(L"open ./bgm.mp3 alias bgm", NULL, 0, NULL);
 	mciSendString(L"play bgm repeat", NULL, 0, NULL);
 	SetTimer(1, 1, NULL);
+	if (!start)
+	{
+		CFont* font=new CFont;
+		font->CreatePointFont(150, TEXT("微软雅黑"), NULL);
 
-	init_bn();
-	start = 1;
-	num = 1;
-	t0 = CTime::GetCurrentTime();
-	starttime = clock();
+		GetDlgItem(IDC_START)->SetFont(font);
+		init_bn();
+		start = 1;
+		num = 1;
+		t0 = CTime::GetCurrentTime();
+		starttime = clock();
+	}
+
 	
 }
 
@@ -397,7 +405,7 @@ void CmfcsDlg::OnUpdateZanting(CCmdUI* pCmdUI)
 void CmfcsDlg::OnKaishi()
 {
 	// TODO: 在此添加命令处理程序代码
-	zanTing = 0;
+	
 	
 	for (int i = 1029; i <= 1053; i++)
 	{
@@ -416,6 +424,7 @@ void CmfcsDlg::OnKaishi()
 		}
 	}
 	MessageBox(TEXT("开始成功！"));
+	zanTing = 0;
 	zend = clock();
 	timez += (double)(zend - zstart) / CLOCKS_PER_SEC;
 }
@@ -424,13 +433,52 @@ void CmfcsDlg::OnKaishi()
 void CmfcsDlg::OnTimer(UINT_PTR nIDEvent)
 {
 	// TODO: 在此添加消息处理程序代码和/或调用默认值
-	CMFCButton* bns = (CMFCButton*)GetDlgItem(IDC_START);
-	endtime = clock();
-	times = (double)(endtime - starttime) / CLOCKS_PER_SEC;
-	times -= timez;
-	CString str;
-	str.Format(TEXT("当前用时%.2f秒\n失误%d次"), times, ernum);
-	bns->SetWindowTextW(str);
-	CDialogEx::OnTimer(nIDEvent);
+	if (!zanTing)
+	{
+		CMFCButton* bns = (CMFCButton*)GetDlgItem(IDC_START);
+		endtime = clock();
+		times = (double)(endtime - starttime) / CLOCKS_PER_SEC;
+		times -= timez;
+		CString str;
+		str.Format(TEXT("当前用时%.2f秒\n失误%d次"), times, ernum);
+		bns->SetWindowTextW(str);
+		CDialogEx::OnTimer(nIDEvent);
+	}
+
 	
+}
+
+
+void CmfcsDlg::OnSFont()
+{
+	// TODO: 在此添加命令处理程序代码
+	//选择字体
+	CFontDialog fdlg;
+	if (IDOK==fdlg.DoModal())
+	{
+		LOGFONT lfont;
+		fdlg.GetCurrentFont(&lfont);
+		delete fn;
+		fn = new CFont;
+		fn->CreateFontIndirectW(&lfont);
+		for (int i = 1029; i <= 1053; i++)
+		{
+			//id =1029~1053
+			GetDlgItem(i)->SetFont(fn);
+		}
+	}
+}
+
+
+void CmfcsDlg::OnDeFont()
+{
+	// TODO: 在此添加命令处理程序代码
+	delete fn;
+	fn = new CFont;
+	fn->CreatePointFont(400, TEXT("宋体"), NULL);
+	for (int i = 1029; i <= 1053; i++)
+	{
+		//id =1029~1053
+		GetDlgItem(i)->SetFont(fn);
+	}
 }
