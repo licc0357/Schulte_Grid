@@ -92,6 +92,10 @@ BEGIN_MESSAGE_MAP(CmfcsDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_MFCBUTTON23, &CmfcsDlg::on_num)
 	ON_BN_CLICKED(IDC_MFCBUTTON24, &CmfcsDlg::on_num)
 	ON_BN_CLICKED(IDC_MFCBUTTON25, &CmfcsDlg::on_num)
+	ON_WM_CONTEXTMENU()
+	ON_COMMAND(ID_ZanTing, &CmfcsDlg::OnZanting)
+	ON_UPDATE_COMMAND_UI(ID_ZanTing, &CmfcsDlg::OnUpdateZanting)
+	ON_COMMAND(ID_Kaishi, &CmfcsDlg::OnKaishi)
 END_MESSAGE_MAP()
 
 
@@ -316,8 +320,79 @@ void CmfcsDlg::on_num()
 	{
 		end = clock();
 		times = (double)(end - start)/CLOCKS_PER_SEC;
+		times -= timez;
 		CString str;
 		str.Format(TEXT("共用时%.2f秒"), times);
 		MessageBox(str);
 	}
+}
+
+
+void CmfcsDlg::OnContextMenu(CWnd* pWnd, CPoint point)
+{
+	//右键菜单
+	// TODO: 在此处添加消息处理程序代码
+	CMenu menuR;
+	menuR.LoadMenuW(IDR_MENUR);
+	if (zanTing)
+	{
+		CMenu* pmenu = menuR.GetSubMenu(1);
+		pmenu->TrackPopupMenu(TPM_LEFTALIGN | TPM_RIGHTBUTTON, point.x, point.y, this);
+
+
+	}
+	else
+	{
+		
+		CMenu* pmenu = menuR.GetSubMenu(0);
+		pmenu->TrackPopupMenu(TPM_LEFTALIGN | TPM_RIGHTBUTTON, point.x, point.y, this);
+
+	}
+
+	
+}
+
+
+void CmfcsDlg::OnZanting()
+{
+	//右键暂停
+	// TODO: 在此添加命令处理程序代码
+	zanTing = 1;
+	zstart = clock();
+	dis_bn();
+	MessageBox(TEXT("暂停成功！"));
+}
+
+
+void CmfcsDlg::OnUpdateZanting(CCmdUI* pCmdUI)
+{
+	// TODO: 在此添加命令更新用户界面处理程序代码
+	//pCmdUI->Enable(FALSE);
+}
+
+
+void CmfcsDlg::OnKaishi()
+{
+	// TODO: 在此添加命令处理程序代码
+	zanTing = 0;
+	
+	for (int i = 1029; i <= 1053; i++)
+	{
+		//id =1029~1053
+		CString numT;
+		GetDlgItemTextW(i, numT);
+		int m_num = _ttoi(numT);
+		if (m_num < num)
+		{
+			GetDlgItem(i)->EnableWindow(FALSE);
+		}
+		else
+		{
+			GetDlgItem(i)->EnableWindow(TRUE);
+
+		}
+	}
+	MessageBox(TEXT("开始成功！"));
+	zend = clock();
+	timez += (double)(zend - zstart) / CLOCKS_PER_SEC;
 }

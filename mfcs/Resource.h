@@ -8,6 +8,7 @@
 #define IDD_MFCS_DIALOG                 102
 #define IDR_MAINFRAME                   128
 #define IDR_MENU1                       130
+#define IDR_MENUR                       133
 #define IDC_START                       1025
 #define IDC_MFCBUTTON1                  1029
 #define IDC_MFCBUTTON3                  1030
@@ -34,13 +35,17 @@
 #define IDC_MFCBUTTON23                 1051
 #define IDC_MFCBUTTON24                 1052
 #define IDC_MFCBUTTON25                 1053
+#define ID_32771                        32771
+#define ID_ZanTing                      32772
+#define ID_32773                        32773
+#define ID_Kaishi                       32774
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        133
-#define _APS_NEXT_COMMAND_VALUE         32771
+#define _APS_NEXT_RESOURCE_VALUE        134
+#define _APS_NEXT_COMMAND_VALUE         32775
 #define _APS_NEXT_CONTROL_VALUE         1030
 #define _APS_NEXT_SYMED_VALUE           101
 #endif

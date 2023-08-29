@@ -45,5 +45,13 @@ public:
 	CTime t0;//开始时间年月日时分秒
 	time_t start, end;
 	// 总时间
-	double times;
+	double times,timez=0;
+	afx_msg void OnContextMenu(CWnd* /*pWnd*/, CPoint /*point*/);
+	afx_msg void OnZanting();
+	afx_msg void OnUpdateZanting(CCmdUI* pCmdUI);
+
+	bool zanTing = 0;//是否暂停
+	time_t zstart, zend;//暂停开始 暂停结束
+
+	afx_msg void OnKaishi();
 };
