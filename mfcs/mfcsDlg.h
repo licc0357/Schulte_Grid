@@ -62,4 +62,6 @@ public:
 	CFont* fn = new CFont; //字体
 	afx_msg void OnSFont();
 	afx_msg void OnDeFont();
+	// bgm播放
+	//static UINT  ThreadBgm(LPVOID p);
 };

@@ -270,11 +270,14 @@ void CmfcsDlg::OnBnClickedStart()
 {
 	// TODO: 在此添加控件通知处理程序代码
 	//PlaySound(MAKEINTRESOURCE(IDR_WAVE_BGM), NULL, SND_RESOURCE | SND_ASYNC|SND_LOOP);
-	mciSendString(L"open ./bgm.mp3 alias bgm", NULL, 0, NULL);
-	mciSendString(L"play bgm repeat", NULL, 0, NULL);
-	SetTimer(1, 1, NULL);
+	
 	if (!start)
 	{
+		//播放bgm
+		//CWinThread* pThread = AfxBeginThread(ThreadBgm,(LPVOID)NULL);
+		mciSendString(L"open ./bgm.mp3 alias bgm", NULL, 0, NULL);
+		mciSendString(L"play bgm repeat", NULL, 0, NULL);
+		SetTimer(1, 1, NULL);
 		CFont* font=new CFont;
 		font->CreatePointFont(150, TEXT("微软雅黑"), NULL);
 
@@ -423,6 +426,7 @@ void CmfcsDlg::OnKaishi()
 
 		}
 	}
+	Beep(800, 200);
 	MessageBox(TEXT("开始成功！"));
 	zanTing = 0;
 	zend = clock();
@@ -482,3 +486,16 @@ void CmfcsDlg::OnDeFont()
 		GetDlgItem(i)->SetFont(fn);
 	}
 }
+
+
+// bgm播放
+//UINT CmfcsDlg::ThreadBgm(LPVOID p)
+//{
+//	 TODO: 在此处添加实现代码.
+//
+//		PlaySound(MAKEINTRESOURCE(IDR_WAVE_BGM), NULL, SND_RESOURCE | SND_ASYNC | SND_LOOP);
+//		
+//	
+//
+//	return 0;
+//}
