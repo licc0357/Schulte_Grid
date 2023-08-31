@@ -71,8 +71,6 @@ BOOL CmfcsApp::InitInstance()
 	// 例如修改为公司或组织名
 	SetRegistryKey(_T("应用程序向导生成的本地应用程序"));
 
-	Dlg3 dlg3;
-	dlg3.DoModal();
 	CmfcsDlg dlg;
 	m_pMainWnd = &dlg;
 	INT_PTR nResponse = dlg.DoModal();

@@ -64,4 +64,12 @@ public:
 	afx_msg void OnDeFont();
 	// bgm播放
 	//static UINT  ThreadBgm(LPVOID p);
+	afx_msg void On3dlg();
+	afx_msg void OnHard();
+	int  difficulty = 0;//难度
+	// 中止游戏
+	void stop();
+	afx_msg void OnNormal();
+	afx_msg void OnHardhard();
+
 };
