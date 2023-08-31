@@ -9,20 +9,22 @@
 #endif
 
 #include "resource.h"		// 主符号
-
+#include"User.h"
 
 // CmfcsApp:
 // 有关此类的实现，请参阅 mfcs.cpp
 //
+//用户数据
 
 class CmfcsApp : public CWinApp
 {
 public:
 	CmfcsApp();
-
+	User m_user[20];
 // 重写
 public:
 	virtual BOOL InitInstance();
+
 
 // 实现
 
