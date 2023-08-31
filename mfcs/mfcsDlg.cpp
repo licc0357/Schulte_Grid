@@ -7,6 +7,7 @@
 #include "mfcs.h"
 #include "mfcsDlg.h"
 #include "afxdialogex.h"
+#include"Dlg3.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -99,6 +100,10 @@ BEGIN_MESSAGE_MAP(CmfcsDlg, CDialogEx)
 	ON_WM_TIMER()
 	ON_COMMAND(ID_S_FONT, &CmfcsDlg::OnSFont)
 	ON_COMMAND(ID_DE_FONT, &CmfcsDlg::OnDeFont)
+	ON_COMMAND(ID_3dlg, &CmfcsDlg::On3dlg)
+	ON_COMMAND(ID_Hard, &CmfcsDlg::OnHard)
+	ON_COMMAND(ID_Normal, &CmfcsDlg::OnNormal)
+	ON_COMMAND(ID_Hardhard, &CmfcsDlg::OnHardhard)
 END_MESSAGE_MAP()
 
 
@@ -111,6 +116,7 @@ BOOL CmfcsDlg::OnInitDialog()
 	srand(time(0));
 	m_Menu.LoadMenu(IDR_MENU1);
 	SetMenu(&m_Menu);
+	GetMenu()->GetSubMenu(0)->CheckMenuRadioItem(0,2, 0,  MF_BYPOSITION);
 	// 将“关于...”菜单项添加到系统菜单中。
 
 	// IDM_ABOUTBOX 必须在系统命令范围内。
@@ -306,16 +312,27 @@ void CmfcsDlg::on_num()
 	int m_num = _ttoi(m_numT);
 	if (m_num != num)//错误变色
 	{
-		PlaySound(MAKEINTRESOURCE(IDR_WAVE_ER), NULL, SND_RESOURCE | SND_ASYNC);
+		if (difficulty == 0)//普通难度
+		{
+			PlaySound(MAKEINTRESOURCE(IDR_WAVE_ER), NULL, SND_RESOURCE | SND_ASYNC);
 
-		//CMFCButton* bn = (CMFCButton*)GetDlgItem(GetFocus()->GetDlgCtrlID());
-		//GetDlgItem(GetFocus()->GetDlgCtrlID())->EnableWindow(FALSE);
-		//Beep(300,300);
-		bn->SetFaceColor(RGB(255, 0, 0));
-		bn->m_bTransparent = FALSE;
-		bn->m_bDontUseWinXPTheme = TRUE;
-		ernum++;
-		Invalidate();
+			//CMFCButton* bn = (CMFCButton*)GetDlgItem(GetFocus()->GetDlgCtrlID());
+			//GetDlgItem(GetFocus()->GetDlgCtrlID())->EnableWindow(FALSE);
+			//Beep(300,300);
+			bn->SetFaceColor(RGB(255, 0, 0));
+			bn->m_bTransparent = FALSE;
+			bn->m_bDontUseWinXPTheme = TRUE;
+			ernum++;
+			Invalidate();
+		}
+		else
+		{
+			Beep(500, 300);
+			stop();
+			MessageBox(L"游戏失败！");
+			
+		}
+
 
 	}
 	else
@@ -324,15 +341,23 @@ void CmfcsDlg::on_num()
 		//PlaySound(MAKEINTRESOURCE(IDR_WAVE_BN), NULL, SND_RESOURCE | SND_ASYNC);
 
 		//CMFCButton* bn = (CMFCButton*)GetDlgItem(GetFocus()->GetDlgCtrlID());
-		bn->EnableWindow(FALSE);
-		for (int n = 1029; n <= 1053; n++)
+		if (difficulty != 2)
 		{
-			//id =1029~1053
-			CMFCButton* bnall = (CMFCButton*)GetDlgItem(n);
-			bnall->m_bTransparent =TRUE;
-			bnall->m_bDontUseWinXPTheme = FALSE;
+			bn->EnableWindow(FALSE);
+			for (int n = 1029; n <= 1053; n++)
+			{
+				//id =1029~1053
+				CMFCButton* bnall = (CMFCButton*)GetDlgItem(n);
+				bnall->m_bTransparent = TRUE;
+				bnall->m_bDontUseWinXPTheme = FALSE;
 
+			}
 		}
+		else
+		{
+			init_bn();
+		}
+
 		
 		Invalidate();
 		num++;
@@ -499,3 +524,56 @@ void CmfcsDlg::OnDeFont()
 //
 //	return 0;
 //}
+
+
+void CmfcsDlg::On3dlg()
+{
+	// TODO: 在此添加命令处理程序代码
+	GetMenu()->GetSubMenu(2)->CheckMenuItem(1, MF_BYPOSITION|MF_CHECKED);
+	Dlg3 dlg3;
+	CmfcsDlg::OnCancel();
+	dlg3.DoModal();
+	
+
+}
+
+//不能失误
+void CmfcsDlg::OnHard()
+{
+	// TODO: 在此添加命令处理程序代码
+	difficulty = 1;
+	GetMenu()->GetSubMenu(0)->CheckMenuRadioItem(0, 2, 1, MF_BYPOSITION);
+
+}
+
+
+// 中止游戏
+void CmfcsDlg::stop()
+{
+	// TODO: 在此处添加实现代码.
+	KillTimer(1);
+	dis_bn();
+	times = timez = 0;
+	start = 0;
+	GetDlgItem(IDC_START)->SetWindowTextW(L"开始");
+}
+
+
+void CmfcsDlg::OnNormal()
+{
+	// TODO: 在此添加命令处理程序代码
+	difficulty = 0;
+	GetMenu()->GetSubMenu(0)->CheckMenuRadioItem(0, 2, 0, MF_BYPOSITION);
+
+}
+
+
+void CmfcsDlg::OnHardhard()
+{
+	// TODO: 在此添加命令处理程序代码
+	difficulty = 2;
+	GetMenu()->GetSubMenu(0)->CheckMenuRadioItem(0, 2, 2, MF_BYPOSITION);
+
+}
+
+
