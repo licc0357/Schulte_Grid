@@ -276,7 +276,6 @@ void CmfcsDlg::OnBnClickedStart()
 {
 	// TODO: 在此添加控件通知处理程序代码
 	//PlaySound(MAKEINTRESOURCE(IDR_WAVE_BGM), NULL, SND_RESOURCE | SND_ASYNC|SND_LOOP);
-	
 	if (!start)
 	{
 		//播放bgm

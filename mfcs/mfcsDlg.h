@@ -8,6 +8,8 @@
 #include <windows.h> 
 #include <mmsystem.h> // 加上，不然PlaySound函数无法使用 
 #pragma comment(lib, "winmm.lib") // 加上，不然PlaySound函数无法使用
+
+
 // CmfcsDlg 对话框
 class CmfcsDlg : public CDialogEx
 {
