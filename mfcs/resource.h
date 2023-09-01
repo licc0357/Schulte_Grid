@@ -14,6 +14,8 @@
 #define IDR_WAVE_BN                     137
 #define IDD_DIALOG_3                    138
 #define IDD_DIALOG_DATA                 141
+#define IDD_rank                        143
+#define IDD_chart                       144
 #define IDC_START                       1025
 #define IDC_MFCBUTTON1                  1029
 #define IDC_MFCBUTTON3                  1030
@@ -36,8 +38,11 @@
 #define IDC_MFCBUTTON19                 1047
 #define IDC_MFCBUTTON20                 1048
 #define IDC_MFCBUTTON21                 1049
+#define IDC_TAB1                        1049
 #define IDC_MFCBUTTON22                 1050
+#define IDC_RADIO1                      1050
 #define IDC_MFCBUTTON23                 1051
+#define IDC_LIST1                       1051
 #define IDC_MFCBUTTON24                 1052
 #define IDC_MFCBUTTON25                 1053
 #define IDC_3MFCBUTTON1                 1061
@@ -77,9 +82,9 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        143
+#define _APS_NEXT_RESOURCE_VALUE        147
 #define _APS_NEXT_COMMAND_VALUE         32793
-#define _APS_NEXT_CONTROL_VALUE         1049
+#define _APS_NEXT_CONTROL_VALUE         1052
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif
