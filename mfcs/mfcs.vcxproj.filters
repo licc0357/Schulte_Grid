@@ -39,6 +39,9 @@
     <ClInclude Include="User.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="DataDlg.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="mfcs.cpp">
@@ -54,6 +57,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="User.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DataDlg.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

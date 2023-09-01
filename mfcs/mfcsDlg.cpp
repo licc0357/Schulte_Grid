@@ -8,6 +8,7 @@
 #include "mfcsDlg.h"
 #include "afxdialogex.h"
 #include"Dlg3.h"
+#include"DataDlg.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -104,6 +105,7 @@ BEGIN_MESSAGE_MAP(CmfcsDlg, CDialogEx)
 	ON_COMMAND(ID_Hard, &CmfcsDlg::OnHard)
 	ON_COMMAND(ID_Normal, &CmfcsDlg::OnNormal)
 	ON_COMMAND(ID_Hardhard, &CmfcsDlg::OnHardhard)
+	ON_COMMAND(ID_ShowData, &CmfcsDlg::OnShowdata)
 END_MESSAGE_MAP()
 
 
@@ -576,3 +578,11 @@ void CmfcsDlg::OnHardhard()
 }
 
 
+
+
+void CmfcsDlg::OnShowdata()
+{
+	// TODO: 在此添加命令处理程序代码
+	DataDlg ddlg;
+	ddlg.DoModal();
+}
