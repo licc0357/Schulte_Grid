@@ -26,6 +26,7 @@ public:
 	virtual BOOL InitInstance();
 	User m_user[20];
 
+
 // 实现
 
 	DECLARE_MESSAGE_MAP()
