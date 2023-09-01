@@ -6,6 +6,8 @@
 #include "afxdialogex.h"
 #include "login.h"
 #include"mfcsDlg.h"
+#include"CCaption.h"
+#include"CMyButton.h"
 
 
 // login 对话框
@@ -29,6 +31,10 @@ void login::DoDataExchange(CDataExchange* pDX)
 	CDialogEx::DoDataExchange(pDX);
 	DDX_Text(pDX, IDC_Name, Name);
 	DDX_Text(pDX, IDC_Password, Password);
+	DDX_Control(pDX, IDC_STATIC_CAPTION, m_staticCap);
+	//  DDX_Control(pDX, IDC_BUTTON_CLOSE, m_btnClose);
+	//  DDX_Control(pDX, IDC_BUTTON_CLOSE, IDC_BUTTON_CLOSE);
+	//  DDX_Control(pDX, IDC_BUTTON_CLOSE, m_btnClose);
 }
 
 
@@ -36,6 +42,7 @@ BEGIN_MESSAGE_MAP(login, CDialogEx)
 	ON_BN_CLICKED(IDC_Login, &login::OnBnClickedLogin)
 	ON_BN_CLICKED(IDC_register, &login::OnBnClickedregister)
 	ON_WM_CLOSE()
+	ON_WM_CTLCOLOR()
 END_MESSAGE_MAP()
 
 
@@ -88,4 +95,62 @@ void login::OnClose()
 	// TODO: 在此添加消息处理程序代码和/或调用默认值
 	exit(0);
 	CDialogEx::OnClose();
+}
+
+
+BOOL login::OnInitDialog()
+{
+	CDialogEx::OnInitDialog();
+
+	MoveWindow(0, 0, 800, 600);
+	// TODO:  在此添加额外的初始化
+	CString strBmpPath = _T(".\\res\\Tigger.jpg");
+
+	CImage img;
+
+	img.Load(strBmpPath);
+
+	CBitmap bmpTmp;
+
+	bmpTmp.Attach(img.Detach());
+
+	m_bkBrush.CreatePatternBrush(&bmpTmp);
+	m_staticCap.Init(400, 300, 105, 30);//调整标题位置
+	return TRUE;  // return TRUE unless you set the focus to a control
+	// 异常: OCX 属性页应返回 FALSE
+}
+
+
+HBRUSH login::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
+{
+	HBRUSH hbr = CDialogEx::OnCtlColor(pDC, pWnd, nCtlColor);
+
+	// TODO:  在此更改 DC 的任何特性
+
+	// TODO:  如果默认的不是所需画笔，则返回另一个画笔
+
+	if (pWnd == this)
+	{
+		return m_bkBrush;
+	}
+
+	if (pWnd->GetDlgCtrlID() == (IDC_STATIC_CAPTION))
+	{
+		//MessageBox(_T("static text"));
+		pDC->SetBkMode(TRANSPARENT);
+		pDC->SetTextColor(RGB(0, 225, 225));
+		return HBRUSH(GetStockObject(HOLLOW_BRUSH));
+	}
+	// TODO:  Return a different brush if the default is not desired
+	if (pWnd->GetDlgCtrlID() == (IDC_STATIC))
+	{
+		//MessageBox(_T("static text"));
+		pDC->SetBkMode(TRANSPARENT);
+		pDC->SetTextColor(RGB(0, 225, 225));
+		return HBRUSH(GetStockObject(HOLLOW_BRUSH));
+	}
+
+
+	return hbr;
+
 }

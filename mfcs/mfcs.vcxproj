@@ -183,6 +183,8 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CCaption.h" />
+    <ClInclude Include="CMyButton.h" />
     <ClInclude Include="DataDlg.h" />
     <ClInclude Include="Dlg3.h" />
     <ClInclude Include="framework.h" />
@@ -196,6 +198,8 @@
     <ClInclude Include="User.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CCaption.cpp" />
+    <ClCompile Include="CMyButton.cpp" />
     <ClCompile Include="DataDlg.cpp" />
     <ClCompile Include="Dlg3.cpp" />
     <ClCompile Include="login.cpp" />
