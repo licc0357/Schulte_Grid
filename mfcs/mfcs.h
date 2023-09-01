@@ -10,6 +10,8 @@
 
 #include "resource.h"		// 主符号
 #include"User.h"
+#include"login.h"
+#include"Register.h"
 
 // CmfcsApp:
 // 有关此类的实现，请参阅 mfcs.cpp

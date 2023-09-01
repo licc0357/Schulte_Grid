@@ -9,6 +9,7 @@
 #include "afxdialogex.h"
 #include"Dlg3.h"
 #include"DataDlg.h"
+#include"User.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -33,6 +34,7 @@ public:
 // 实现
 protected:
 	DECLARE_MESSAGE_MAP()
+public:
 };
 
 CAboutDlg::CAboutDlg() : CDialogEx(IDD_ABOUTBOX)
@@ -586,3 +588,5 @@ void CmfcsDlg::OnShowdata()
 	DataDlg ddlg;
 	ddlg.DoModal();
 }
+
+
