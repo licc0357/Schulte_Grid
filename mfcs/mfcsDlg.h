@@ -75,4 +75,5 @@ public:
 	afx_msg void OnHardhard();
 
 	afx_msg void OnShowdata();
+	void writeData();
 };

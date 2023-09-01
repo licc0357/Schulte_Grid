@@ -35,8 +35,10 @@ public:
 
 	CTime t0;//开始时间年月日时分秒
 	time_t starttime, endtime;
-	// 总时间
-	double times, timez = 0;
+	
+	double times= 0;// 总时间
+  
+	double timez = 0;  //暂停时间
 
 
 	bool zanTing = 0;//是否暂停

@@ -368,13 +368,15 @@ void CmfcsDlg::on_num()
 
 		
 	
-	if (num == 26)
+	if (num == 4)
 	{
 		endtime = clock();
 		times = (double)(endtime - starttime)/CLOCKS_PER_SEC;
 		times -= timez;
 		CString str;
 		str.Format(TEXT("共用时%.2f秒\n失误%d次"), times,ernum);
+		writeData();
+		stop();
 		MessageBox(str);
 	}
 }
@@ -590,3 +592,18 @@ void CmfcsDlg::OnShowdata()
 }
 
 
+
+
+void CmfcsDlg::writeData()
+{
+	// TODO: 在此处添加实现代码.
+	theApp.now_user.time[theApp.now_user.gametime] = times;
+	theApp.now_user.gametime++;
+	User tu;
+	CFile file(L"data.dat", CFile::modeWrite);
+	long loff = sizeof(theApp.now_user);
+	file.Seek(theApp.I_user*loff,CFile::begin);
+	file.Write(&theApp.now_user, sizeof(theApp.now_user));
+	
+
+}

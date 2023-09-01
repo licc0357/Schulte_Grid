@@ -22,7 +22,8 @@ class CmfcsApp : public CWinApp
 {
 public:
 	CmfcsApp();
-	User m_user[20];
+	User now_user;
+	int I_user=0;
 // 重写
 public:
 	virtual BOOL InitInstance();

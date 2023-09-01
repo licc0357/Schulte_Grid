@@ -48,20 +48,42 @@ void login::OnBnClickedLogin()
 		L"data.dat",
 		CFile::modeRead
 	);
-		User user;
-		file.Read(&user, sizeof(user));
-		file.Close();
 		UpdateData(TRUE);
-		// TODO: 在此添加控件通知处理程序代码7
-		CString mName, mPsw, mEmail;
-		user.readUser(mName, mPsw, mEmail);
-		if (Name == mName && Password ==mPsw)
+		User user;
+		bool islogin=0;
+		while (file.Read(&user, sizeof(user))==sizeof(user))
 		{
-			CDialogEx::OnOK();
+			CString mName, mPsw, mEmail;
+			user.readUser(mName, mPsw, mEmail);
+			if (Name == mName && Password == mPsw)
+			{
+				theApp.now_user = user;
+				CDialogEx::OnOK();
+				islogin = 1;
+				break;
+			}
+			else
+			{
+				theApp.I_user++;
+			}
 		}
-		else {
+		file.Close();
+		if (!islogin)
+		{
 			MessageBox(L"用户名或密码错误，请重新输入\nPs:若没有注册，请点击注册按钮进行注册");
+
 		}
+		// TODO: 在此添加控件通知处理程序代码7
+		//CString mName, mPsw, mEmail;
+		//user.readUser(mName, mPsw, mEmail);
+		//if (Name == mName && Password ==mPsw)
+		//{
+		//	theApp.now_user = user;
+		//	CDialogEx::OnOK();
+		//}
+		//else {
+		//	MessageBox(L"用户名或密码错误，请重新输入\nPs:若没有注册，请点击注册按钮进行注册");
+		//}
 
 }
 

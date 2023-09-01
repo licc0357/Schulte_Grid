@@ -48,16 +48,14 @@ void Register::OnBnClickedQregister()
 {
 	CFile file(
 		L"data.dat",
-		CFile::modeCreate | CFile::modeWrite);
+		CFile::modeCreate | CFile::modeWrite|CFile::modeNoTruncate);
 	// TODO: 在此添加控件通知处理程序代码
 	if (Password1 == Password2) {
 		UpdateData(TRUE);
 		User user;
 		user.writeUser(Name1, Password1, Email1);
-
-		file.Write(
-			&user,
-			sizeof(user));
+		file.SeekToEnd();
+		file.Write(&user,sizeof(user));
 		file.Close();
 		CDialogEx::OnOK();
 	}
