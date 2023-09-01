@@ -183,6 +183,7 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="DataDlg.h" />
     <ClInclude Include="Dlg3.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="mfcs.h" />
@@ -193,6 +194,7 @@
     <ClInclude Include="User.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="DataDlg.cpp" />
     <ClCompile Include="Dlg3.cpp" />
     <ClCompile Include="mfcs.cpp" />
     <ClCompile Include="mfcsDlg.cpp" />

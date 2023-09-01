@@ -13,6 +13,7 @@
 #define IDR_WAVE_ER                     136
 #define IDR_WAVE_BN                     137
 #define IDD_DIALOG_3                    138
+#define IDD_DIALOG_DATA                 141
 #define IDC_START                       1025
 #define IDC_MFCBUTTON1                  1029
 #define IDC_MFCBUTTON3                  1030
@@ -69,13 +70,15 @@
 #define ID_Normal                       32788
 #define ID_Hard                         32789
 #define ID_Hardhard                     32790
+#define ID_32791                        32791
+#define ID_ShowData                     32792
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        141
-#define _APS_NEXT_COMMAND_VALUE         32791
+#define _APS_NEXT_RESOURCE_VALUE        143
+#define _APS_NEXT_COMMAND_VALUE         32793
 #define _APS_NEXT_CONTROL_VALUE         1049
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
