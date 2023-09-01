@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include "afxdialogex.h"
-
+#include"C_chartDlg.h"
+#include"C_rankDlg.h"
 
 // DataDlg 对话框
 
@@ -10,6 +11,8 @@ class DataDlg : public CDialogEx
 
 public:
 	DataDlg(CWnd* pParent = nullptr);   // 标准构造函数
+	C_chartDlg m_chartDlg;
+	C_rankDlg m_rankDlg;
 	virtual ~DataDlg();
 
 // 对话框数据
@@ -21,4 +24,8 @@ protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV 支持
 
 	DECLARE_MESSAGE_MAP()
+public:
+	CTabCtrl m_tab;
+	virtual BOOL OnInitDialog();
+	afx_msg void OnTcnSelchangeTab1(NMHDR* pNMHDR, LRESULT* pResult);
 };
