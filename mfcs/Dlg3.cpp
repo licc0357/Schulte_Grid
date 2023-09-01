@@ -63,8 +63,6 @@ BOOL Dlg3::OnInitDialog()
 	srand(time(0));
 	m_Menu.LoadMenu(IDR_MENU1);
 	SetMenu(&m_Menu);
-	//SetIcon(m_hIcon, TRUE);			// 设置大图标
-	//SetIcon(m_hIcon, FALSE);		// 设置小图标
 	fn->CreatePointFont(400, TEXT("微软雅黑"), NULL);
 	// TODO: 在此添加额外的初始化代码
 	//初始按钮不可用

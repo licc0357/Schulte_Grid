@@ -111,3 +111,19 @@ void login::OnClose()
 	exit(0);
 	CDialogEx::OnClose();
 }
+
+
+void login::OnOK()
+{
+	// TODO: 在此添加专用代码和/或调用基类
+
+//	CDialogEx::OnOK();
+}
+
+
+void login::OnCancel()
+{
+	// TODO: 在此添加专用代码和/或调用基类
+
+	//CDialogEx::OnCancel();
+}

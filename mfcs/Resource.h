@@ -3,8 +3,6 @@
 // 供 mfcs.rc 使用
 //
 #define IDM_ABOUTBOX                    0x0010
-#define IDD_rank                        143
-#define IDD_chart                       144
 #define IDD_ABOUTBOX                    100
 #define IDS_ABOUTBOX                    101
 #define IDD_MFCS_DIALOG                 102
@@ -16,8 +14,10 @@
 #define IDR_WAVE_BN                     137
 #define IDD_DIALOG_3                    138
 #define IDD_DIALOG_DATA                 141
-#define IDD_DIALOG_LOGIN                161
+#define IDD_rank                        143
+#define IDD_chart                       144
 #define IDD_Zhuce                       146
+#define IDD_DIALOG_LOGIN                161
 #define IDC_START                       1025
 #define IDC_MFCBUTTON1                  1029
 #define IDC_MFCBUTTON3                  1030
@@ -40,11 +40,7 @@
 #define IDC_MFCBUTTON19                 1047
 #define IDC_MFCBUTTON20                 1048
 #define IDC_MFCBUTTON21                 1049
-#define IDC_TAB1                        1149
 #define IDC_RADIO1                      1050
-#define IDC_LIST1                       1151
-
-
 #define IDC_MFCBUTTON22                 1050
 #define IDC_MFCBUTTON23                 1051
 #define IDC_MFCBUTTON24                 1052
@@ -68,6 +64,8 @@
 #define IDC_Login                       1101
 #define IDC_Email1                      1103
 #define IDC_Name                        1104
+#define IDC_TAB1                        1149
+#define IDC_LIST1                       1151
 #define ID_32771                        32771
 #define ID_ZanTing                      32772
 #define ID_32773                        32773
@@ -90,13 +88,17 @@
 #define ID_Hardhard                     32790
 #define ID_32791                        32791
 #define ID_ShowData                     32792
+#define ID_32800                        32800
+#define ID_STOP                         32801
+#define ID_32802                        32802
+#define ID_STOP2                        32803
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        200
-#define _APS_NEXT_COMMAND_VALUE         32793
+#define _APS_NEXT_RESOURCE_VALUE        201
+#define _APS_NEXT_COMMAND_VALUE         32804
 #define _APS_NEXT_CONTROL_VALUE         1200
 #define _APS_NEXT_SYMED_VALUE           101
 #endif

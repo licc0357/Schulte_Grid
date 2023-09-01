@@ -108,6 +108,9 @@ BEGIN_MESSAGE_MAP(CmfcsDlg, CDialogEx)
 	ON_COMMAND(ID_Normal, &CmfcsDlg::OnNormal)
 	ON_COMMAND(ID_Hardhard, &CmfcsDlg::OnHardhard)
 	ON_COMMAND(ID_ShowData, &CmfcsDlg::OnShowdata)
+	ON_COMMAND(ID_STOP, &CmfcsDlg::OnStop)
+	ON_COMMAND(ID_STOP2, &CmfcsDlg::OnStop)
+
 END_MESSAGE_MAP()
 
 
@@ -606,4 +609,18 @@ void CmfcsDlg::writeData()
 	file.Write(&theApp.now_user, sizeof(theApp.now_user));
 	
 
+}
+
+
+void CmfcsDlg::OnStop()
+{
+	// TODO: 在此添加命令处理程序代码
+	if (MessageBox(L"确定要停止游戏吗？", L"停止游戏", MB_OKCANCEL) == IDOK)
+	{
+		stop();
+
+		MessageBox(L"游戏停止！\n请按开始键重新开始游戏");
+
+
+	}
 }

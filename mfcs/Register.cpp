@@ -72,3 +72,11 @@ void Register::OnBnClickedQregister()
 //	Reg.DoModal();
 	// TODO: 在此添加控件通知处理程序代码
 //}
+
+
+void Register::OnOK()
+{
+	// TODO: 在此添加专用代码和/或调用基类
+
+	//CDialogEx::OnOK();
+}

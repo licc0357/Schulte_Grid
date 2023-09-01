@@ -76,4 +76,5 @@ public:
 
 	afx_msg void OnShowdata();
 	void writeData();
+	afx_msg void OnStop();
 };

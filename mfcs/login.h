@@ -28,4 +28,6 @@ public:
 //	afx_msg void OnBnClickedregister();
 	afx_msg void OnBnClickedregister();
 	afx_msg void OnClose();
+	virtual void OnOK();
+	virtual void OnCancel();
 };

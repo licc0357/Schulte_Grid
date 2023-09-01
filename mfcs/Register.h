@@ -28,4 +28,5 @@ public:
 	afx_msg void OnBnClickedQregister();
 	CString Email1;
 //	afx_msg void OnBnClickedregister();
+	virtual void OnOK();
 };
