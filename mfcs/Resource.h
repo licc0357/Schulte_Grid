@@ -66,6 +66,7 @@
 #define IDC_Name                        1104
 #define IDC_TAB1                        1149
 #define IDC_LIST1                       1151
+#define IDC_CUSTOM1                     1200
 #define ID_32771                        32771
 #define ID_ZanTing                      32772
 #define ID_32773                        32773
@@ -99,7 +100,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        201
 #define _APS_NEXT_COMMAND_VALUE         32804
-#define _APS_NEXT_CONTROL_VALUE         1200
+#define _APS_NEXT_CONTROL_VALUE         1201
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif
