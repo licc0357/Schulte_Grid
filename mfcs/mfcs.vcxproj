@@ -183,6 +183,8 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="C_chartDlg.h" />
+    <ClInclude Include="C_rankDlg.h" />
     <ClInclude Include="DataDlg.h" />
     <ClInclude Include="Dlg3.h" />
     <ClInclude Include="framework.h" />
@@ -194,6 +196,8 @@
     <ClInclude Include="User.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="C_chartDlg.cpp" />
+    <ClCompile Include="C_rankDlg.cpp" />
     <ClCompile Include="DataDlg.cpp" />
     <ClCompile Include="Dlg3.cpp" />
     <ClCompile Include="mfcs.cpp" />
