@@ -3,6 +3,8 @@
 // 供 mfcs.rc 使用
 //
 #define IDM_ABOUTBOX                    0x0010
+#define IDD_rank                        143
+#define IDD_chart                       144
 #define IDD_ABOUTBOX                    100
 #define IDS_ABOUTBOX                    101
 #define IDD_MFCS_DIALOG                 102
@@ -14,8 +16,8 @@
 #define IDR_WAVE_BN                     137
 #define IDD_DIALOG_3                    138
 #define IDD_DIALOG_DATA                 141
-#define IDD_rank                        143
-#define IDD_chart                       144
+#define IDD_DIALOG_LOGIN                161
+#define IDD_Zhuce                       146
 #define IDC_START                       1025
 #define IDC_MFCBUTTON1                  1029
 #define IDC_MFCBUTTON3                  1030
@@ -38,13 +40,20 @@
 #define IDC_MFCBUTTON19                 1047
 #define IDC_MFCBUTTON20                 1048
 #define IDC_MFCBUTTON21                 1049
-#define IDC_TAB1                        1049
-#define IDC_MFCBUTTON22                 1050
+#define IDC_TAB1                        1149
 #define IDC_RADIO1                      1050
+#define IDC_LIST1                       1151
+
+
+#define IDC_MFCBUTTON22                 1050
 #define IDC_MFCBUTTON23                 1051
-#define IDC_LIST1                       1051
 #define IDC_MFCBUTTON24                 1052
 #define IDC_MFCBUTTON25                 1053
+#define IDC_Password                    1054
+#define IDC_Name1                       1056
+#define IDC_Password2                   1058
+#define IDC_Password1                   1059
+#define IDC_QRegister                   1060
 #define IDC_3MFCBUTTON1                 1061
 #define IDC_3MFCBUTTON2                 1062
 #define IDC_3MFCBUTTON3                 1063
@@ -55,6 +64,10 @@
 #define IDC_3MFCBUTTON8                 1068
 #define IDC_3MFCBUTTON9                 1069
 #define IDC_3START                      1070
+#define IDC_register                    1100
+#define IDC_Login                       1101
+#define IDC_Email1                      1103
+#define IDC_Name                        1104
 #define ID_32771                        32771
 #define ID_ZanTing                      32772
 #define ID_32773                        32773
@@ -82,9 +95,9 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        147
+#define _APS_NEXT_RESOURCE_VALUE        200
 #define _APS_NEXT_COMMAND_VALUE         32793
-#define _APS_NEXT_CONTROL_VALUE         1052
+#define _APS_NEXT_CONTROL_VALUE         1200
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif
