@@ -24,7 +24,8 @@ public:
 // 重写
 public:
 	virtual BOOL InitInstance();
-	User m_user[20];
+	
+
 
 // 实现
 
