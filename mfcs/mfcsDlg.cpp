@@ -111,6 +111,9 @@ BEGIN_MESSAGE_MAP(CmfcsDlg, CDialogEx)
 	ON_COMMAND(ID_STOP, &CmfcsDlg::OnStop)
 	ON_COMMAND(ID_STOP2, &CmfcsDlg::OnStop)
 
+	ON_WM_CLOSE()
+	ON_COMMAND(ID_qby, &CmfcsDlg::Onqby)
+	ON_COMMAND(ID_tkzc, &CmfcsDlg::Ontkzc)
 END_MESSAGE_MAP()
 
 
@@ -620,4 +623,39 @@ void CmfcsDlg::OnStop()
 
 
 	}
+}
+
+
+void CmfcsDlg::OnClose()
+{
+	// TODO: 在此添加消息处理程序代码和/或调用默认值
+	if (MessageBox(L"确定要关闭游戏吗？", L"关闭游戏", MB_OKCANCEL) == IDOK)
+	{
+		CDialogEx::OnClose();
+
+		MessageBox(L"再见");
+
+
+	}
+	
+}
+
+
+void CmfcsDlg::Onqby()
+{
+	// TODO: 在此添加命令处理程序代码
+	bgm = 0;
+	pThread->SuspendThread();
+	
+	pThread = AfxBeginThread(ThreadBgm, (LPVOID)NULL);
+}
+
+
+void CmfcsDlg::Ontkzc()
+{
+	// TODO: 在此添加命令处理程序代码
+	bgm = 1;
+	pThread->SuspendThread();
+	
+	pThread = AfxBeginThread(ThreadBgm, (LPVOID)1);
 }

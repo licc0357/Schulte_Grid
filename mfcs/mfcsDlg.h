@@ -78,4 +78,9 @@ public:
 	void writeData();
 	afx_msg void OnStop();
 	CWinThread* pThread;//bgm线程
+	afx_msg void OnClose();
+	afx_msg void Onqby();
+	 int bgm=0;
+	 int* p = &bgm;
+	afx_msg void Ontkzc();
 };
