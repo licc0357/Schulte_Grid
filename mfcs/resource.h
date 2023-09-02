@@ -18,6 +18,8 @@
 #define IDD_chart                       144
 #define IDD_Zhuce                       146
 #define IDD_DIALOG_LOGIN                161
+#define IDD_DIALOG_ADMIN                201
+#define IDD_DIALOG_ADC                  204
 #define IDC_START                       1025
 #define IDC_MFCBUTTON1                  1029
 #define IDC_MFCBUTTON3                  1030
@@ -67,6 +69,16 @@
 #define IDC_TAB1                        1149
 #define IDC_LIST1                       1151
 #define IDC_CUSTOM1                     1200
+#define IDC_BN_CHANGE                   1201
+#define IDC_BN_ADD                      1202
+#define IDC_BN_DELETE                   1203
+#define IDC_EDIT1                       1204
+#define IDC_EDIT2                       1205
+#define IDC_EDIT4                       1207
+#define IDC_BUTTON1                     1208
+#define IDC_BUTTON2                     1209
+#define IDC_EDIT3                       1210
+#define IDC_BUTTON3                     1211
 #define ID_32771                        32771
 #define ID_ZanTing                      32772
 #define ID_32773                        32773
@@ -98,9 +110,9 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        201
+#define _APS_NEXT_RESOURCE_VALUE        206
 #define _APS_NEXT_COMMAND_VALUE         32804
-#define _APS_NEXT_CONTROL_VALUE         1201
+#define _APS_NEXT_CONTROL_VALUE         1212
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

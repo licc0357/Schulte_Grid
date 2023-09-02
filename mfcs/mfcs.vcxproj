@@ -183,6 +183,8 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AdcDlg.h" />
+    <ClInclude Include="AdminDlg.h" />
     <ClInclude Include="ChartCtrl_source\ChartAxis.h" />
     <ClInclude Include="ChartCtrl_source\ChartAxisLabel.h" />
     <ClInclude Include="ChartCtrl_source\ChartBalloonLabel.h" />
@@ -229,6 +231,8 @@
     <ClInclude Include="User.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AdcDlg.cpp" />
+    <ClCompile Include="AdminDlg.cpp" />
     <ClCompile Include="ChartCtrl_source\ChartAxis.cpp" />
     <ClCompile Include="ChartCtrl_source\ChartAxisLabel.cpp" />
     <ClCompile Include="ChartCtrl_source\ChartBarSerie.cpp" />

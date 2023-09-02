@@ -600,14 +600,15 @@ void CmfcsDlg::OnShowdata()
 void CmfcsDlg::writeData()
 {
 	// TODO: 在此处添加实现代码.
-	theApp.now_user.time[theApp.now_user.gametime] = times;
+	theApp.now_user.G[theApp.now_user.gametime].clock = t0;
+	theApp.now_user.G[theApp.now_user.gametime].ernum = ernum;
+	theApp.now_user.G[theApp.now_user.gametime].t = times;
 	theApp.now_user.gametime++;
-	User tu;
 	CFile file(L"data.dat", CFile::modeWrite);
 	long loff = sizeof(theApp.now_user);
 	file.Seek(theApp.I_user*loff,CFile::begin);
 	file.Write(&theApp.now_user, sizeof(theApp.now_user));
-	
+	file.Close();
 
 }
 
