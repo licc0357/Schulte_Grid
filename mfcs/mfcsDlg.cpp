@@ -111,6 +111,9 @@ BEGIN_MESSAGE_MAP(CmfcsDlg, CDialogEx)
 	ON_COMMAND(ID_STOP, &CmfcsDlg::OnStop)
 	ON_COMMAND(ID_STOP2, &CmfcsDlg::OnStop)
 
+	ON_WM_CLOSE()
+	ON_COMMAND(ID_qby, &CmfcsDlg::Onqby)
+	ON_COMMAND(ID_tkzc, &CmfcsDlg::Ontkzc)
 END_MESSAGE_MAP()
 
 
@@ -119,6 +122,8 @@ END_MESSAGE_MAP()
 BOOL CmfcsDlg::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
+
+	SkinH_Attach();
 	//菜单栏
 	srand(time(0));
 	m_Menu.LoadMenu(IDR_MENU1);
@@ -286,9 +291,10 @@ void CmfcsDlg::OnBnClickedStart()
 	if (!start)
 	{
 		//播放bgm
-		//CWinThread* pThread = AfxBeginThread(ThreadBgm,(LPVOID)NULL);
-		mciSendString(L"open ./bgm.mp3 alias bgm", NULL, 0, NULL);
-		mciSendString(L"play bgm repeat", NULL, 0, NULL);
+		pThread = AfxBeginThread(ThreadBgm,(LPVOID)NULL);
+		
+		//mciSendString(L"open ./bgm.mp3 alias bgm", NULL, 0, NULL);
+		//mciSendString(L"play bgm repeat", NULL, 0, NULL);
 		SetTimer(1, 1, NULL);
 		CFont* font=new CFont;
 		font->CreatePointFont(150, TEXT("微软雅黑"), NULL);
@@ -343,8 +349,8 @@ void CmfcsDlg::on_num()
 	}
 	else
 	{
-		Beep(800, 100);
-		//PlaySound(MAKEINTRESOURCE(IDR_WAVE_BN), NULL, SND_RESOURCE | SND_ASYNC);
+		//Beep(800, 100);
+		PlaySound(MAKEINTRESOURCE(IDR_WAVE_BN), NULL, SND_RESOURCE | SND_ASYNC);
 
 		//CMFCButton* bn = (CMFCButton*)GetDlgItem(GetFocus()->GetDlgCtrlID());
 		if (difficulty != 2)
@@ -421,6 +427,7 @@ void CmfcsDlg::OnZanting()
 {
 	//右键暂停
 	// TODO: 在此添加命令处理程序代码
+	pThread->SuspendThread();
 	zanTing = 1;
 	zstart = clock();
 	dis_bn();
@@ -442,6 +449,7 @@ void CmfcsDlg::OnKaishi()
 {
 	// TODO: 在此添加命令处理程序代码
 	
+
 	
 	for (int i = 1029; i <= 1053; i++)
 	{
@@ -461,6 +469,7 @@ void CmfcsDlg::OnKaishi()
 	}
 	Beep(800, 200);
 	MessageBox(TEXT("开始成功！"));
+	pThread->ResumeThread();
 	zanTing = 0;
 	zend = clock();
 	timez += (double)(zend - zstart) / CLOCKS_PER_SEC;
@@ -521,17 +530,7 @@ void CmfcsDlg::OnDeFont()
 }
 
 
-// bgm播放
-//UINT CmfcsDlg::ThreadBgm(LPVOID p)
-//{
-//	 TODO: 在此处添加实现代码.
-//
-//		PlaySound(MAKEINTRESOURCE(IDR_WAVE_BGM), NULL, SND_RESOURCE | SND_ASYNC | SND_LOOP);
-//		
-//	
-//
-//	return 0;
-//}
+
 
 
 void CmfcsDlg::On3dlg()
@@ -560,7 +559,7 @@ void CmfcsDlg::stop()
 {
 	// TODO: 在此处添加实现代码.
 	KillTimer(1);
-	dis_bn();
+	pThread->SuspendThread();
 	times = timez = 0;
 	start = 0;
 	GetDlgItem(IDC_START)->SetWindowTextW(L"开始");
@@ -624,4 +623,39 @@ void CmfcsDlg::OnStop()
 
 
 	}
+}
+
+
+void CmfcsDlg::OnClose()
+{
+	// TODO: 在此添加消息处理程序代码和/或调用默认值
+	if (MessageBox(L"确定要关闭游戏吗？", L"关闭游戏", MB_OKCANCEL) == IDOK)
+	{
+		CDialogEx::OnClose();
+
+		MessageBox(L"再见");
+
+
+	}
+	
+}
+
+
+void CmfcsDlg::Onqby()
+{
+	// TODO: 在此添加命令处理程序代码
+	bgm = 0;
+	pThread->SuspendThread();
+	
+	pThread = AfxBeginThread(ThreadBgm, (LPVOID)NULL);
+}
+
+
+void CmfcsDlg::Ontkzc()
+{
+	// TODO: 在此添加命令处理程序代码
+	bgm = 1;
+	pThread->SuspendThread();
+	
+	pThread = AfxBeginThread(ThreadBgm, (LPVOID)1);
 }

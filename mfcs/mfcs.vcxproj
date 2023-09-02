@@ -144,6 +144,7 @@
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <UACExecutionLevel>AsInvoker</UACExecutionLevel>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
@@ -233,6 +234,7 @@
   <ItemGroup>
     <ClCompile Include="AdcDlg.cpp" />
     <ClCompile Include="AdminDlg.cpp" />
+    <ClCompile Include="beep.cpp" />
     <ClCompile Include="ChartCtrl_source\ChartAxis.cpp" />
     <ClCompile Include="ChartCtrl_source\ChartAxisLabel.cpp" />
     <ClCompile Include="ChartCtrl_source\ChartBarSerie.cpp" />

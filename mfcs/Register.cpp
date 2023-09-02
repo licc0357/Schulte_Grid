@@ -48,9 +48,20 @@ void Register::OnBnClickedQregister()
 {
 	CFile file(
 		L"data.dat",
-		CFile::modeCreate | CFile::modeWrite|CFile::modeNoTruncate);
+		CFile::modeCreate | CFile::modeReadWrite|CFile::modeNoTruncate);
 	// TODO: 在此添加控件通知处理程序代码
 	UpdateData(TRUE);
+	User u1;
+	CString n, p, e;
+	while (file.Read(&u1, sizeof(u1))== sizeof(u1))
+	{
+		u1.readUser(n, p, e);
+		if (n==Name1)
+		{
+			MessageBox(L"用户名已存在！");
+			return;
+		}
+	}
 	if (Password1 == Password2) {
 		
 		User user;
@@ -58,6 +69,7 @@ void Register::OnBnClickedQregister()
 		file.SeekToEnd();
 		file.Write(&user,sizeof(user));
 		file.Close();
+		MessageBox(L"注册成功");
 		CDialogEx::OnOK();
 	}
 	else {

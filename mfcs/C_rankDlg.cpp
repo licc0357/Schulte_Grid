@@ -38,6 +38,8 @@ END_MESSAGE_MAP()
 BOOL C_rankDlg::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
+	SkinH_Attach();
+
 	CRect rect;
 	// TODO:  在此添加额外的初始化
 	m_List1.GetClientRect(&rect);
