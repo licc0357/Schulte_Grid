@@ -119,6 +119,8 @@ END_MESSAGE_MAP()
 BOOL CmfcsDlg::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
+
+	SkinH_Attach();
 	//菜单栏
 	srand(time(0));
 	m_Menu.LoadMenu(IDR_MENU1);

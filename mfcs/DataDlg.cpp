@@ -39,7 +39,7 @@ END_MESSAGE_MAP()
 BOOL DataDlg::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
-
+    SkinH_Attach();
 	// TODO:  在此添加额外的初始化
     // TODO: Add extra initialization here   
     CRect tabRect;   // 标签控件客户区的位置和大小   
