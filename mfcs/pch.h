@@ -7,7 +7,10 @@
 #ifndef PCH_H
 #define PCH_H
 
+//或者 #pragma comment(lib, "SkinHu.lib")
+
 // 添加要在此处预编译的标头
 #include "framework.h"
-
+#include "SkinH.h"
+#pragma comment(lib, "SkinHu.lib")
 #endif //PCH_H

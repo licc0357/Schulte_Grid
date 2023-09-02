@@ -263,6 +263,9 @@
     <ClCompile Include="ChartCtrl_source\ChartXYSerie.cpp">
       <Filter>Cchart</Filter>
     </ClCompile>
+    <ClCompile Include="beep.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="mfcs.rc">
