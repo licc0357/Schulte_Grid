@@ -65,7 +65,7 @@ public:
 	afx_msg void OnSFont();
 	afx_msg void OnDeFont();
 	// bgm播放
-	//static UINT  ThreadBgm(LPVOID p);
+	static UINT  ThreadBgm(LPVOID p);
 	afx_msg void On3dlg();
 	afx_msg void OnHard();
 	int  difficulty = 0;//难度
@@ -77,4 +77,5 @@ public:
 	afx_msg void OnShowdata();
 	void writeData();
 	afx_msg void OnStop();
+	CWinThread* pThread;//bgm线程
 };
