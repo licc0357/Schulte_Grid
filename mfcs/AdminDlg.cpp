@@ -79,7 +79,7 @@ BOOL AdminDlg::OnInitDialog()
 void AdminDlg::OnBnClickedBnChange()
 {
 	// TODO: 在此添加控件通知处理程序代码
-
+	
 }
 
 
@@ -93,7 +93,7 @@ void AdminDlg::OnNMClickListAdmin(NMHDR* pNMHDR, LRESULT* pResult)
 	{
 		// 获取被选择列表项第一个子项的文本   
 		sName= adminList.GetItemText(pNMListView->iItem, 0);
-		// 将选择的语言显示与编辑框中   
+		
 	}
 	*pResult = 0;
 }
