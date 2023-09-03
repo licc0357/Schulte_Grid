@@ -85,10 +85,13 @@
 #define IDC_EDIT_N                      1209
 #define IDC_EDIT3                       1210
 #define IDC_BUTTON3                     1211
+
+#define IDC_LIST2                       1212
+
 #define IDC_LIST_EDIT                   1212
 #define IDC_LIST_ADC                    1212
 #define IDC_LIST_ADMIN                  1213
-#define IDC_LIST2                       1300
+
 #define ID_32771                        32771
 #define ID_ZanTing                      32772
 #define ID_32773                        32773
