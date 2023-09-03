@@ -217,6 +217,7 @@
     <ClInclude Include="ChartCtrl_source\ChartTitle.h" />
     <ClInclude Include="ChartCtrl_source\ChartXYSerie.h" />
     <ClInclude Include="ChartCtrl_source\PointsOrdering.h" />
+    <ClInclude Include="CpersonDlg.h" />
     <ClInclude Include="C_chartDlg.h" />
     <ClInclude Include="C_rankDlg.h" />
     <ClInclude Include="DataDlg.h" />
@@ -258,6 +259,7 @@
     <ClCompile Include="ChartCtrl_source\ChartSurfaceSerie.cpp" />
     <ClCompile Include="ChartCtrl_source\ChartTitle.cpp" />
     <ClCompile Include="ChartCtrl_source\ChartXYSerie.cpp" />
+    <ClCompile Include="CpersonDlg.cpp" />
     <ClCompile Include="C_chartDlg.cpp" />
     <ClCompile Include="C_rankDlg.cpp" />
     <ClCompile Include="DataDlg.cpp" />

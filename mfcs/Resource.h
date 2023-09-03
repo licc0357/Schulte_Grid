@@ -20,6 +20,7 @@
 #define IDD_DIALOG_LOGIN                161
 #define IDD_DIALOG_ADMIN                201
 #define IDD_DIALOG_ADC                  204
+#define IDD_person                      206
 #define IDC_START                       1025
 #define IDC_MFCBUTTON1                  1029
 #define IDC_MFCBUTTON3                  1030
@@ -79,6 +80,7 @@
 #define IDC_BUTTON2                     1209
 #define IDC_EDIT3                       1210
 #define IDC_BUTTON3                     1211
+#define IDC_LIST2                       1212
 #define ID_32771                        32771
 #define ID_ZanTing                      32772
 #define ID_32773                        32773
@@ -114,9 +116,9 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        206
+#define _APS_NEXT_RESOURCE_VALUE        208
 #define _APS_NEXT_COMMAND_VALUE         32808
-#define _APS_NEXT_CONTROL_VALUE         1212
+#define _APS_NEXT_CONTROL_VALUE         1213
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif
