@@ -84,13 +84,13 @@ int CALLBACK C_rankDlg::CompareByNum(LPARAM lP1, LPARAM lP2, LPARAM lP) {
 
 	//分别获取参与排序的两个行的编号
 
-	int nNum1 = _ttoi(pThis->m_List1.GetItemText(lP1, 0));
+	int nNum1 = _ttoi(pThis->m_List1.GetItemText(lP1, 2));
 
-	int nNum2 = _ttoi(pThis->m_List1.GetItemText(lP2, 0));
+	int nNum2 = _ttoi(pThis->m_List1.GetItemText(lP2, 2));
 
-	if (bFlag) return nNum2 > nNum1;
+	
 
-	else      return nNum1 > nNum2;
+	 return nNum1 > nNum2;
 }
 
 void C_rankDlg::OnLvnItemchangedList1(NMHDR* pNMHDR, LRESULT* pResult)
