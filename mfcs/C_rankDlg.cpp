@@ -5,7 +5,7 @@
 #include "mfcs.h"
 #include "afxdialogex.h"
 #include "C_rankDlg.h"
-
+#include"User.h"
 
 // C_rankDlg 对话框
 
@@ -29,6 +29,7 @@ void C_rankDlg::DoDataExchange(CDataExchange* pDX)
 
 
 BEGIN_MESSAGE_MAP(C_rankDlg, CDialogEx)
+	ON_NOTIFY(LVN_ITEMCHANGED, IDC_LIST1, &C_rankDlg::OnLvnItemchangedList1)
 END_MESSAGE_MAP()
 
 
@@ -48,6 +49,40 @@ BOOL C_rankDlg::OnInitDialog()
 	m_List1.InsertColumn(2, _T("用户名"), LVCFMT_CENTER, rect.Width() / 4, 2);
 	m_List1.InsertColumn(3, _T("最短用时"), LVCFMT_CENTER, rect.Width() / 4, 3);
 	m_List1.InsertColumn(4, _T("完成次数"), LVCFMT_CENTER, rect.Width() / 4, 4);
+	CFile file(L"data.dat", CFile::modeRead);
+	User U;
+	int i = 0;
+	while (file.Read(&U, sizeof(U)) == sizeof(U)) {
+		CString mName, mPsw, mEmail,str;
+		U.readUser(mName, mPsw, mEmail);
+		U.Getmintime();
+		if (U.gametime)
+		{
+			m_List1.InsertItem(i, _T("0"));
+			m_List1.SetItemText(i, 1, mName);
+			str.Format(L"%.2f", U.mintime);
+			m_List1.SetItemText(i, 2, str);
+			str.Format(L"%d", U.gametime);
+			m_List1.SetItemText(i, 3, str);
+			i++;
+		}
+
+	}
+	for (int j = 0; j <= i; j++)
+	{
+		CString str;
+		str.Format(L"%d", j + 1);
+		m_List1.SetItemText(j, 0, str);
+	}
+
 	return TRUE;  // return TRUE unless you set the focus to a control
 	// 异常: OCX 属性页应返回 FALSE
+}
+
+
+void C_rankDlg::OnLvnItemchangedList1(NMHDR* pNMHDR, LRESULT* pResult)
+{
+	LPNMLISTVIEW pNMLV = reinterpret_cast<LPNMLISTVIEW>(pNMHDR);
+	// TODO: 在此添加控件通知处理程序代码
+	*pResult = 0;
 }

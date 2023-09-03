@@ -24,4 +24,5 @@ protected:
 public:
 	CListCtrl m_List1;
 	virtual BOOL OnInitDialog();
+	afx_msg void OnLvnItemchangedList1(NMHDR* pNMHDR, LRESULT* pResult);
 };
