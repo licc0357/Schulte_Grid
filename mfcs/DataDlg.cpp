@@ -43,10 +43,12 @@ BOOL DataDlg::OnInitDialog()
 	// TODO:  在此添加额外的初始化
     // TODO: Add extra initialization here   
     CRect tabRect;   // 标签控件客户区的位置和大小   
-    m_tab.InsertItem(0, _T("用户表格"));
+    m_tab.InsertItem(0, _T("个人统计图"));
     m_tab.InsertItem(1, _T("用户排名"));
+    m_tab.InsertItem(2, _T("个人统计表"));
     m_chartDlg.Create(IDD_chart, &m_tab);
     m_rankDlg.Create(IDD_rank, &m_tab);
+    m_personDlg.Create(IDD_person, &m_tab);
     m_tab.GetClientRect(&tabRect);
     tabRect.left += 1;
     tabRect.right -= 1;
@@ -54,6 +56,7 @@ BOOL DataDlg::OnInitDialog()
     tabRect.bottom -= 1;
     m_chartDlg.SetWindowPos(NULL, tabRect.left, tabRect.top, tabRect.Width(), tabRect.Height(), SWP_SHOWWINDOW);
     m_rankDlg.SetWindowPos(NULL, tabRect.left, tabRect.top, tabRect.Width(), tabRect.Height(), SWP_HIDEWINDOW);
+    m_personDlg.SetWindowPos(NULL, tabRect.left, tabRect.top, tabRect.Width(), tabRect.Height(), SWP_HIDEWINDOW);
 	return TRUE;  // return TRUE unless you set the focus to a control
 	// 异常: OCX 属性页应返回 FALSE
 }
@@ -75,10 +78,17 @@ void DataDlg::OnTcnSelchangeTab1(NMHDR* pNMHDR, LRESULT* pResult)
     case 0:
         m_chartDlg.SetWindowPos(NULL, tabRect.left, tabRect.top, tabRect.Width(), tabRect.Height(), SWP_SHOWWINDOW);
         m_rankDlg.SetWindowPos(NULL, tabRect.left, tabRect.top, tabRect.Width(), tabRect.Height(), SWP_HIDEWINDOW);
+        m_personDlg.SetWindowPos(NULL, tabRect.left, tabRect.top, tabRect.Width(), tabRect.Height(), SWP_HIDEWINDOW);
         break;
     case 1:
         m_chartDlg.SetWindowPos(NULL, tabRect.left, tabRect.top, tabRect.Width(), tabRect.Height(), SWP_HIDEWINDOW);
         m_rankDlg.SetWindowPos(NULL, tabRect.left, tabRect.top, tabRect.Width(), tabRect.Height(), SWP_SHOWWINDOW);
+        m_personDlg.SetWindowPos(NULL, tabRect.left, tabRect.top, tabRect.Width(), tabRect.Height(), SWP_HIDEWINDOW);
+        break;
+    case 2:
+        m_chartDlg.SetWindowPos(NULL, tabRect.left, tabRect.top, tabRect.Width(), tabRect.Height(), SWP_HIDEWINDOW);
+        m_rankDlg.SetWindowPos(NULL, tabRect.left, tabRect.top, tabRect.Width(), tabRect.Height(), SWP_HIDEWINDOW);
+        m_personDlg.SetWindowPos(NULL, tabRect.left, tabRect.top, tabRect.Width(), tabRect.Height(), SWP_SHOWWINDOW);
         break;
     default:
         break;
