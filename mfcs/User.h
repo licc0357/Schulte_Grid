@@ -21,5 +21,6 @@ public:
 	void writeUser(CString n, CString p, CString e);
 	void readUser(CString& n, CString& p, CString& e);
 
+	double Getmintime();
 };
 

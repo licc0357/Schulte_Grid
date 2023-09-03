@@ -21,4 +21,10 @@ protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV 支持
 
 	DECLARE_MESSAGE_MAP()
+public:
+	CString adcName;
+	CString adcPsw;
+	CString adcEmail;
+	afx_msg void OnBnClickedEditY();
+	virtual BOOL OnInitDialog();
 };

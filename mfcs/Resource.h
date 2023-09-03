@@ -73,12 +73,20 @@
 #define IDC_BN_ADD                      1202
 #define IDC_BN_DELETE                   1203
 #define IDC_EDIT1                       1204
+#define IDC_EDIT_NAME                   1204
 #define IDC_EDIT2                       1205
+#define IDC_EDIT_PSW                    1205
 #define IDC_EDIT4                       1207
+#define IDC_EDIT_EMAIL                  1207
 #define IDC_BUTTON1                     1208
+#define IDC_EDIT_Y                      1208
 #define IDC_BUTTON2                     1209
+#define IDC_EDIT_N                      1209
 #define IDC_EDIT3                       1210
 #define IDC_BUTTON3                     1211
+#define IDC_LIST_EDIT                   1212
+#define IDC_LIST_ADC                    1212
+#define IDC_LIST_ADMIN                  1213
 #define ID_32771                        32771
 #define ID_ZanTing                      32772
 #define ID_32773                        32773
@@ -116,7 +124,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        206
 #define _APS_NEXT_COMMAND_VALUE         32808
-#define _APS_NEXT_CONTROL_VALUE         1212
+#define _APS_NEXT_CONTROL_VALUE         1214
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

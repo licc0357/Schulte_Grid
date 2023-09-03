@@ -6,6 +6,7 @@
 #include "afxdialogex.h"
 #include "login.h"
 #include"mfcsDlg.h"
+#include"AdminDlg.h"
 
 
 // login 对话框
@@ -44,11 +45,21 @@ END_MESSAGE_MAP()
 
 void login::OnBnClickedLogin()
 {
-	CFile file(
-		L"data.dat",
-		CFile::modeRead
-	);
+
 		UpdateData(TRUE);
+		//管理员账户
+		if (Name==L"admin"&&Password==L"admin")
+		{
+			AdminDlg adlg;
+			Name.Empty();
+			Password.Empty();
+			UpdateData(FALSE);
+
+			adlg.DoModal();
+
+			return;
+		}
+		CFile file(L"data.dat",CFile::modeRead);
 		User user;
 		bool islogin=0;
 		while (file.Read(&user, sizeof(user))==sizeof(user))

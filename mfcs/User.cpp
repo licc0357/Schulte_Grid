@@ -24,3 +24,18 @@ void User::readUser(CString& n, CString& p, CString& e)
 	p = psw;
 	e = email;
 }
+
+
+double User::Getmintime()
+{
+	// TODO: 在此处添加实现代码.
+	mintime = G[0].t;
+	for (int i = 0; i < gametime;i++)
+	{
+		if (G[i].t < mintime)
+		{
+			mintime = G[i].t;
+		}
+	}
+	return mintime;
+}
