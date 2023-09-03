@@ -27,5 +27,5 @@ public:
 	virtual BOOL OnInitDialog();
 	afx_msg void OnBnClickedBnChange();
 	afx_msg void OnNMClickListAdmin(NMHDR* pNMHDR, LRESULT* pResult);
-	CString sName;//选择的用户名
+
 };

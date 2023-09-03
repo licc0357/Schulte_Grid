@@ -43,6 +43,20 @@ void AdminDlg::OnBnClickedBnAdd()
 	// TODO: 在此添加控件通知处理程序代码
 	AdcDlg adcdlg;
 	adcdlg.DoModal();
+	adminList.DeleteAllItems();
+	CFile file(L"data.dat", CFile::modeRead);
+	User U;
+	int i = 0;
+	while (file.Read(&U, sizeof(U)) == sizeof(U)) {
+		CString mName, mPsw, mEmail, str;
+		U.readUser(mName, mPsw, mEmail);
+		adminList.InsertItem(i, mName);
+		adminList.SetItemText(i, 1, mPsw);
+		adminList.SetItemText(i, 2, mEmail);
+		i++;
+	}
+	// TODO:  在此添加额外的初始化
+	file.Close();
 
 }
 
@@ -70,7 +84,7 @@ BOOL AdminDlg::OnInitDialog()
 		i++;
 	}
 	// TODO:  在此添加额外的初始化
-
+	file.Close();
 	return TRUE;  // return TRUE unless you set the focus to a control
 	// 异常: OCX 属性页应返回 FALSE
 }
@@ -79,7 +93,34 @@ BOOL AdminDlg::OnInitDialog()
 void AdminDlg::OnBnClickedBnChange()
 {
 	// TODO: 在此添加控件通知处理程序代码
+	if (theApp.sName == L"")
+	{
+		MessageBox(L"未选择用户！ ");
+		return;
+	}
+	else
+	{
+		AdcDlg adcdlg;
+		adcdlg.DoModal();
+		adminList.DeleteAllItems();
 
+		CFile file(L"data.dat", CFile::modeRead);
+		User U;
+		int i = 0;
+		while (file.Read(&U, sizeof(U)) == sizeof(U)) {
+			CString mName, mPsw, mEmail, str;
+			U.readUser(mName, mPsw, mEmail);
+			adminList.InsertItem(i, mName);
+			adminList.SetItemText(i, 1, mPsw);
+			adminList.SetItemText(i, 2, mEmail);
+			i++;
+		}
+		// TODO:  在此添加额外的初始化
+		file.Close();
+		
+	}
+
+	
 }
 
 
@@ -92,8 +133,8 @@ void AdminDlg::OnNMClickListAdmin(NMHDR* pNMHDR, LRESULT* pResult)
 	if (-1 != pNMListView->iItem)        // 如果iItem不是-1，就说明有列表项被选择   
 	{
 		// 获取被选择列表项第一个子项的文本   
-		sName= adminList.GetItemText(pNMListView->iItem, 0);
-		// 将选择的语言显示与编辑框中   
+		theApp.sName= adminList.GetItemText(pNMListView->iItem, 0);
+		
 	}
 	*pResult = 0;
 }

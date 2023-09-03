@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include "afxdialogex.h"
+#include"CCaption.h"
 
 
 // login 对话框
@@ -30,4 +31,8 @@ public:
 	afx_msg void OnClose();
 	virtual void OnOK();
 	virtual void OnCancel();
+	virtual BOOL OnInitDialog();
+	CBrush m_bkBrush;
+	afx_msg HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
+	CCaption m_staticCap;
 };

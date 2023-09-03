@@ -65,6 +65,7 @@
 #define IDC_3START                      1070
 #define IDC_register                    1100
 #define IDC_Login                       1101
+#define IDC_0                           1101
 #define IDC_Email1                      1103
 #define IDC_Name                        1104
 #define IDC_TAB1                        1149
@@ -85,13 +86,11 @@
 #define IDC_EDIT_N                      1209
 #define IDC_EDIT3                       1210
 #define IDC_BUTTON3                     1211
-
 #define IDC_LIST2                       1212
-
 #define IDC_LIST_EDIT                   1212
 #define IDC_LIST_ADC                    1212
 #define IDC_LIST_ADMIN                  1213
-
+#define IDC_STATIC_CAPTION              1214
 #define ID_32771                        32771
 #define ID_ZanTing                      32772
 #define ID_32773                        32773
@@ -122,14 +121,16 @@
 #define ID_32805                        32805
 #define ID_qby                          32806
 #define ID_tkzc                         32807
+#define ID_32808                        32808
+#define ID_NBGM                         32809
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        300
-#define _APS_NEXT_COMMAND_VALUE         32808
-#define _APS_NEXT_CONTROL_VALUE         1214
+#define _APS_NEXT_COMMAND_VALUE         32810
+#define _APS_NEXT_CONTROL_VALUE         1215
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

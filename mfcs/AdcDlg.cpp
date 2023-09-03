@@ -47,18 +47,20 @@ void AdcDlg::OnBnClickedEditY()
 	// TODO: 在此添加控件通知处理程序代码
 	CFile file(L"data.dat",CFile::modeCreate | CFile::modeReadWrite | CFile::modeNoTruncate);
 	// TODO: 在此添加控件通知处理程序代码
-	UpdateData(TRUE);
-	User u1;
-	CString n, p, e;
-	while (file.Read(&u1, sizeof(u1)) == sizeof(u1))
+	if (index == -1)
 	{
-		u1.readUser(n, p, e);
-		if (n == adcName)
+		UpdateData(TRUE);
+		User u1;
+		CString n, p, e;
+		while (file.Read(&u1, sizeof(u1)) == sizeof(u1))
 		{
-			MessageBox(L"用户名已存在！");
-			return;
+			u1.readUser(n, p, e);
+			if (n == adcName)
+			{
+				MessageBox(L"用户名已存在！");
+				return;
+			}
 		}
-	}
 
 		User user;
 		user.writeUser(adcName, adcPsw, adcEmail);
@@ -69,20 +71,67 @@ void AdcDlg::OnBnClickedEditY()
 		adcEmail.Empty();
 		adcName.Empty();
 		adcPsw.Empty();
+	}
+	else
+	{
+		UpdateData(TRUE);
+		if (adcName != theApp.sName)
+		{
+			User u1;
+			CString n, p, e;
+			while (file.Read(&u1, sizeof(u1)) == sizeof(u1))
+			{
+				u1.readUser(n, p, e);
+				if (n == adcName)
+				{
+					MessageBox(L"用户名已存在！");
+					return;
+				}
+			}
+		}
+		
+		User user;
+		file.Seek(index * sizeof(user), CFile::begin);
+		file.Read(&user, sizeof(user));
+		file.Seek(index * sizeof(user), CFile::begin);
+		user.writeUser(adcName, adcPsw, adcEmail);
+		file.Write(&user, sizeof(user));
+		file.Close();
+		MessageBox(L"修改成功");
+		adcEmail.Empty();
+		adcName.Empty();
+		adcPsw.Empty();
+
+	}
+	
 }
 
 
 BOOL AdcDlg::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
-	User u;
-	CString n, p, e;
-	CFile adf(L"data.dat", CFile::modeCreate | CFile::modeReadWrite | CFile::modeNoTruncate);
-	while (adf.Read(&u, sizeof(u)) == sizeof(u))
+	if (theApp.sName!=L"")
 	{
-		u.readUser(n, p, e);
+		index = 0;
+		User u;
+		CString n, p, e;
+		CFile adf(L"data.dat", CFile::modeCreate | CFile::modeReadWrite | CFile::modeNoTruncate);
+		while (adf.Read(&u, sizeof(u)) == sizeof(u))
+		{
+			u.readUser(n, p, e);
+			if (n == theApp.sName)
+			{
+				adcEmail = u.email;
+				adcName = u.name;
+				adcPsw = u.psw;
+				UpdateData(FALSE);
+				break;
+			}
+			index++;
 
+		}
 	}
+
 	// TODO:  在此添加额外的初始化
 
 	return TRUE;  // return TRUE unless you set the focus to a control

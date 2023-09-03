@@ -28,6 +28,7 @@ public:
 	CmfcsApp();
 	User now_user;
 	int I_user=0;
+	CString sName;
 // 重写
 public:
 	virtual BOOL InitInstance();

@@ -159,6 +159,12 @@
     <ClInclude Include="CpersonDlg.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="CCaption.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CMyButton.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="mfcs.cpp">
@@ -270,6 +276,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="CpersonDlg.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CCaption.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CMyButton.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

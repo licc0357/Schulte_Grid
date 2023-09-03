@@ -101,7 +101,6 @@ void C_rankDlg::OnLvnItemchangedList1(NMHDR* pNMHDR, LRESULT* pResult)
 }
 void C_rankDlg::sort() 
 {
-	bFlag = !bFlag;
 
 	int nCount = m_List1.GetItemCount() - 1;
 

@@ -27,4 +27,5 @@ public:
 	CString adcEmail;
 	afx_msg void OnBnClickedEditY();
 	virtual BOOL OnInitDialog();
+	int index = -1;//修改位置
 };

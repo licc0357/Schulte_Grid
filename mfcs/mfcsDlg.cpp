@@ -114,6 +114,7 @@ BEGIN_MESSAGE_MAP(CmfcsDlg, CDialogEx)
 	ON_WM_CLOSE()
 	ON_COMMAND(ID_qby, &CmfcsDlg::Onqby)
 	ON_COMMAND(ID_tkzc, &CmfcsDlg::Ontkzc)
+	ON_COMMAND(ID_NBGM, &CmfcsDlg::OnNbgm)
 END_MESSAGE_MAP()
 
 
@@ -291,7 +292,15 @@ void CmfcsDlg::OnBnClickedStart()
 	if (!start)
 	{
 		//播放bgm
-		pThread = AfxBeginThread(ThreadBgm,(LPVOID)NULL);
+		if (bgm)
+		{
+			pThread = AfxBeginThread(ThreadBgm, (LPVOID)1);
+
+		}else
+		{
+			pThread = AfxBeginThread(ThreadBgm, (LPVOID)NULL);
+
+		}
 		
 		//mciSendString(L"open ./bgm.mp3 alias bgm", NULL, 0, NULL);
 		//mciSendString(L"play bgm repeat", NULL, 0, NULL);
@@ -645,9 +654,14 @@ void CmfcsDlg::Onqby()
 {
 	// TODO: 在此添加命令处理程序代码
 	bgm = 0;
-	pThread->SuspendThread();
-	
-	pThread = AfxBeginThread(ThreadBgm, (LPVOID)NULL);
+	if (pThread)
+	{
+		pThread->SuspendThread();
+
+		pThread = AfxBeginThread(ThreadBgm, (LPVOID)NULL);
+	}
+
+
 }
 
 
@@ -655,7 +669,27 @@ void CmfcsDlg::Ontkzc()
 {
 	// TODO: 在此添加命令处理程序代码
 	bgm = 1;
-	pThread->SuspendThread();
+	if (pThread)
+	{
+		pThread->SuspendThread();
+
+		pThread = AfxBeginThread(ThreadBgm, (LPVOID)1);
+	}
+
+
+}
+
+
+void CmfcsDlg::OnNbgm()
+{
+	// TODO: 在此添加命令处理程序代码
+	if (pThread)
+	{
+		pThread->SuspendThread();
+
+
+	}
 	
-	pThread = AfxBeginThread(ThreadBgm, (LPVOID)1);
+
+
 }
