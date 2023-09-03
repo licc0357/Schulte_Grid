@@ -35,7 +35,7 @@ END_MESSAGE_MAP()
 
 // C_rankDlg 消息处理程序
 
-
+BOOL C_rankDlg::bFlag = TRUE;
 BOOL C_rankDlg::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
@@ -68,6 +68,7 @@ BOOL C_rankDlg::OnInitDialog()
 		}
 
 	}
+	sort();
 	for (int j = 0; j <= i; j++)
 	{
 		CString str;
@@ -78,11 +79,38 @@ BOOL C_rankDlg::OnInitDialog()
 	return TRUE;  // return TRUE unless you set the focus to a control
 	// 异常: OCX 属性页应返回 FALSE
 }
+int CALLBACK C_rankDlg::CompareByNum(LPARAM lP1, LPARAM lP2, LPARAM lP) {
+	C_rankDlg* pThis = (C_rankDlg*)lP;
 
+	//分别获取参与排序的两个行的编号
+
+	int nNum1 = _ttoi(pThis->m_List1.GetItemText(lP1, 0));
+
+	int nNum2 = _ttoi(pThis->m_List1.GetItemText(lP2, 0));
+
+	if (bFlag) return nNum2 > nNum1;
+
+	else      return nNum1 > nNum2;
+}
 
 void C_rankDlg::OnLvnItemchangedList1(NMHDR* pNMHDR, LRESULT* pResult)
 {
 	LPNMLISTVIEW pNMLV = reinterpret_cast<LPNMLISTVIEW>(pNMHDR);
 	// TODO: 在此添加控件通知处理程序代码
 	*pResult = 0;
+}
+void C_rankDlg::sort() 
+{
+	bFlag = !bFlag;
+
+	int nCount = m_List1.GetItemCount() - 1;
+
+	while (nCount > -1)//为每一行绑定一个值，将来这个值会传递给排序函数的参数lp1和lp2
+	{
+		m_List1.SetItemData(nCount, nCount);
+
+		nCount--;
+	}
+
+	m_List1.SortItems(CompareByNum, (DWORD_PTR)this);
 }
