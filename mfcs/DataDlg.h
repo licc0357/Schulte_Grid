@@ -2,6 +2,7 @@
 #include "afxdialogex.h"
 #include"C_chartDlg.h"
 #include"C_rankDlg.h"
+#include"CpersonDlg.h"
 #include"ChartCtrl_source/ChartCtrl.h"
 
 // DataDlg 对话框
@@ -14,6 +15,7 @@ public:
 	DataDlg(CWnd* pParent = nullptr);   // 标准构造函数
 	C_chartDlg m_chartDlg;
 	C_rankDlg m_rankDlg;
+	CpersonDlg m_personDlg;
 	virtual ~DataDlg();
 
 // 对话框数据
