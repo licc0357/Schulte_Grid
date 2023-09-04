@@ -71,6 +71,8 @@
 #define IDC_TAB1                        1149
 #define IDC_LIST1                       1151
 #define IDC_CUSTOM1                     1200
+#define IDC_chart1                      1200
+#define IDC_Custom                      1200
 #define IDC_BN_CHANGE                   1201
 #define IDC_BN_ADD                      1202
 #define IDC_BN_DELETE                   1203
