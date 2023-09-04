@@ -74,6 +74,8 @@ void Register::OnBnClickedQregister()
 	}
 	else {
 		MessageBox(L"两次输入密码不相同请重新输入");
+		file.Close();
+
 	}
 
 }
