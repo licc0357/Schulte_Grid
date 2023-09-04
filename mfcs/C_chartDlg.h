@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include "afxdialogex.h"
-
+#include"ChartCtrl_source/ChartCtrl.h"
 // C_chartDlg 对话框
 
 class C_chartDlg : public CDialogEx
@@ -20,4 +20,7 @@ protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV 支持
 
 	DECLARE_MESSAGE_MAP()
+public:
+	CChartCtrl m_chart1;
+	virtual BOOL OnInitDialog();
 };
