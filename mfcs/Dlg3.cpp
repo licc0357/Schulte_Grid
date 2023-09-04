@@ -61,8 +61,6 @@ BOOL Dlg3::OnInitDialog()
 
 	// TODO:  在此添加额外的初始化
 	srand(time(0));
-	m_Menu.LoadMenu(IDR_MENU1);
-	SetMenu(&m_Menu);
 	fn->CreatePointFont(400, TEXT("微软雅黑"), NULL);
 	// TODO: 在此添加额外的初始化代码
 	//初始按钮不可用
@@ -195,7 +193,9 @@ void Dlg3::on_num()
 			times -= timez;
 			CString str;
 			str.Format(TEXT("共用时%.2f秒\n失误%d次"), times, ernum);
+			KillTimer(1);
 			MessageBox(str);
+
 		}
 	}
 }

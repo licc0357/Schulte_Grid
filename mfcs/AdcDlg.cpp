@@ -113,6 +113,7 @@ void AdcDlg::OnBnClickedEditY()
 BOOL AdcDlg::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
+	SkinH_Attach();
 	if (theApp.sName!=L"")
 	{
 		index = 0;

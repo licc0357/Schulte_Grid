@@ -21,6 +21,10 @@
 #define IDD_DIALOG_ADMIN                201
 #define IDD_DIALOG_ADC                  204
 #define IDD_person                      206
+#define IDR_WAVE1                       300
+#define IDI_ICON1                       302
+#define IDD_DIALOG1                     303
+#define IDD_DIALOG_CHANGE               303
 #define IDC_START                       1025
 #define IDC_MFCBUTTON1                  1029
 #define IDC_MFCBUTTON3                  1030
@@ -72,7 +76,6 @@
 #define IDC_LIST1                       1151
 #define IDC_CUSTOM1                     1200
 #define IDC_chart1                      1200
-#define IDC_Custom                      1200
 #define IDC_BN_CHANGE                   1201
 #define IDC_BN_ADD                      1202
 #define IDC_BN_DELETE                   1203
@@ -127,13 +130,16 @@
 #define ID_tkzc                         32807
 #define ID_32808                        32808
 #define ID_NBGM                         32809
+#define ID_32810                        32810
+#define ID_32811                        32811
+#define ID_DEUSER                       32812
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        300
-#define _APS_NEXT_COMMAND_VALUE         32810
+#define _APS_NEXT_RESOURCE_VALUE        305
+#define _APS_NEXT_COMMAND_VALUE         32813
 #define _APS_NEXT_CONTROL_VALUE         1215
 #define _APS_NEXT_SYMED_VALUE           101
 #endif

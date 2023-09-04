@@ -57,7 +57,7 @@ END_MESSAGE_MAP()
 CmfcsDlg::CmfcsDlg(CWnd* pParent /*=nullptr*/)
 	: CDialogEx(IDD_MFCS_DIALOG, pParent)
 {
-	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
+	m_hIcon = AfxGetApp()->LoadIcon(IDI_ICON1);
 }
 
 void CmfcsDlg::DoDataExchange(CDataExchange* pDX)
@@ -115,6 +115,7 @@ BEGIN_MESSAGE_MAP(CmfcsDlg, CDialogEx)
 	ON_COMMAND(ID_qby, &CmfcsDlg::Onqby)
 	ON_COMMAND(ID_tkzc, &CmfcsDlg::Ontkzc)
 	ON_COMMAND(ID_NBGM, &CmfcsDlg::OnNbgm)
+	ON_COMMAND(ID_DEUSER, &CmfcsDlg::OnDeuser)
 END_MESSAGE_MAP()
 
 
@@ -386,7 +387,7 @@ void CmfcsDlg::on_num()
 
 		
 	
-	if (num == 4)
+	if (num == 26)
 	{
 		endtime = clock();
 		times = (double)(endtime - starttime)/CLOCKS_PER_SEC;
@@ -547,7 +548,6 @@ void CmfcsDlg::On3dlg()
 	// TODO: 在此添加命令处理程序代码
 	GetMenu()->GetSubMenu(2)->CheckMenuItem(1, MF_BYPOSITION|MF_CHECKED);
 	Dlg3 dlg3;
-	CmfcsDlg::OnCancel();
 	dlg3.DoModal();
 	
 
@@ -608,15 +608,20 @@ void CmfcsDlg::OnShowdata()
 void CmfcsDlg::writeData()
 {
 	// TODO: 在此处添加实现代码.
-	theApp.now_user.G[theApp.now_user.gametime].clock = t0;
-	theApp.now_user.G[theApp.now_user.gametime].ernum = ernum;
-	theApp.now_user.G[theApp.now_user.gametime].t = times;
-	theApp.now_user.gametime++;
-	CFile file(L"data.dat", CFile::modeWrite);
-	long loff = sizeof(theApp.now_user);
-	file.Seek(theApp.I_user*loff,CFile::begin);
-	file.Write(&theApp.now_user, sizeof(theApp.now_user));
-	file.Close();
+	if (difficulty == 0)
+	{
+		theApp.now_user.G[theApp.now_user.gametime].clock = t0;
+		theApp.now_user.G[theApp.now_user.gametime].ernum = ernum;
+		theApp.now_user.G[theApp.now_user.gametime].t = times;
+		theApp.now_user.gametime++;
+		CFile file(L"data.dat", CFile::modeWrite);
+		long loff = sizeof(theApp.now_user);
+		file.Seek(theApp.I_user * loff, CFile::begin);
+		file.Write(&theApp.now_user, sizeof(theApp.now_user));
+		file.Close();
+
+	}
+
 
 }
 
@@ -692,4 +697,11 @@ void CmfcsDlg::OnNbgm()
 	
 
 
+}
+
+
+void CmfcsDlg::OnDeuser()
+{
+	// TODO: 在此添加命令处理程序代码
+	CDialogEx::OnOK();
 }

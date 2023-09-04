@@ -289,9 +289,13 @@
     <None Include="ChartCtrl_source\ChartPointsArray.inl" />
     <None Include="ChartCtrl_source\ChartSerieBase.inl" />
     <None Include="res\mfcs.rc2" />
+    <None Include="res\wave1.bin" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="res\2.ico" />
+    <Image Include="res\icon1.ico" />
     <Image Include="res\mfcs.ico" />
+    <Image Include="res\s.ico" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="res\bgm.wav" />

@@ -84,4 +84,5 @@ public:
 	 int* p = &bgm;
 	afx_msg void Ontkzc();
 	afx_msg void OnNbgm();
+	afx_msg void OnDeuser();
 };

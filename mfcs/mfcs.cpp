@@ -74,7 +74,14 @@ BOOL CmfcsApp::InitInstance()
 	if (Log.DoModal() == IDOK)
 	{
 		CmfcsDlg dlg;
-		dlg.DoModal();
+		if (dlg.DoModal()==IDOK)
+		{
+			if (pShellManager != nullptr)
+			{
+				delete pShellManager;
+			}
+			InitInstance();
+		}
 	}
 	/*INT_PTR nResponse = dlg.DoModal();
 	if (nResponse == IDOK)

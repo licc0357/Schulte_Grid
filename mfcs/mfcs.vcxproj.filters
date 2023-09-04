@@ -306,9 +306,21 @@
     <None Include="ChartCtrl_source\ChartSerieBase.inl">
       <Filter>Cchart</Filter>
     </None>
+    <None Include="res\wave1.bin">
+      <Filter>资源文件</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\mfcs.ico">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\2.ico">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\icon1.ico">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\s.ico">
       <Filter>资源文件</Filter>
     </Image>
   </ItemGroup>

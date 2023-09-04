@@ -65,6 +65,7 @@ void AdminDlg::OnBnClickedBnAdd()
 BOOL AdminDlg::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
+	SkinH_Attach();
 	// TODO:  在此添加额外的初始化
 	adminList.SetExtendedStyle(adminList.GetExtendedStyle() | LVS_EX_FULLROWSELECT | LVS_EX_GRIDLINES);
 	adminList.InsertColumn(1, _T("用户名"), LVCFMT_CENTER, 100, 1);
@@ -153,11 +154,11 @@ void AdminDlg::OnBnClickedBnDelete()
 	{
 		
 		adminList.DeleteAllItems();
-		CFile tfile(L"temp.dat", CFile::modeCreate || CFile::modeWrite);
-		CFile file(L"data.dat", CFile::modeRead);
+		CFile tfile(L"temp.dat", CFile::modeCreate | CFile::modeWrite);
+		CFile dfile(L"data.dat", CFile::modeReadWrite|CFile::shareDenyNone);
 		User U;
 		int i = 0;
-		while (file.Read(&U, sizeof(U)) == sizeof(U)) {
+		while (dfile.Read(&U, sizeof(U)) == sizeof(U)) {
 			if (U.name != theApp.sName)
 			{
 				CString mName, mPsw, mEmail, str;
@@ -166,12 +167,16 @@ void AdminDlg::OnBnClickedBnDelete()
 				adminList.SetItemText(i, 1, mPsw);
 				adminList.SetItemText(i, 2, mEmail);
 				i++;
-				tfile
+				tfile.Write(&U, sizeof(U));
 			}
 
 		}
+		dfile.Close();
+		dfile.Remove(L"data.dat");
 		// TODO:  在此添加额外的初始化
-		file.Close();
+		tfile.Close();
+		tfile.Rename(L"temp.dat", L"data.dat");
+		tfile.Close();
 
 	}
 }

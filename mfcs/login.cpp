@@ -62,7 +62,7 @@ void login::OnBnClickedLogin()
 			UpdateData(FALSE);
 
 			adlg.DoModal();
-
+			Invalidate();
 			return;
 		}
 		CFile file(L"data.dat",CFile::modeRead);
