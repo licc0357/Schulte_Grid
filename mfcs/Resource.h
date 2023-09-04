@@ -85,7 +85,9 @@
 #define IDC_BUTTON2                     1209
 #define IDC_EDIT_N                      1209
 #define IDC_EDIT3                       1210
+#define IDC_EDIT_adcTime                1210
 #define IDC_BUTTON3                     1211
+#define IDC_adcTime                     1211
 #define IDC_LIST2                       1212
 #define IDC_LIST_EDIT                   1212
 #define IDC_LIST_ADC                    1212

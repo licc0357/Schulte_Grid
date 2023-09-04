@@ -28,4 +28,5 @@ public:
 	afx_msg void OnBnClickedBnChange();
 	afx_msg void OnNMClickListAdmin(NMHDR* pNMHDR, LRESULT* pResult);
 
+	afx_msg void OnBnClickedBnDelete();
 };

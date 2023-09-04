@@ -28,4 +28,8 @@ public:
 	afx_msg void OnBnClickedEditY();
 	virtual BOOL OnInitDialog();
 	int index = -1;//修改位置
+	CListBox adcList;
+	double adctime;
+	afx_msg void OnBnClickedadctime();
+	User user;
 };

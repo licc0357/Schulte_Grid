@@ -17,6 +17,7 @@ AdcDlg::AdcDlg(CWnd* pParent /*=nullptr*/)
 	, adcName(_T(""))
 	, adcPsw(_T(""))
 	, adcEmail(_T(""))
+	, adctime(0)
 {
 
 }
@@ -31,11 +32,14 @@ void AdcDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_EDIT_NAME, adcName);
 	DDX_Text(pDX, IDC_EDIT_PSW, adcPsw);
 	DDX_Text(pDX, IDC_EDIT_EMAIL, adcEmail);
+	DDX_Control(pDX, IDC_LIST_ADC, adcList);
+	DDX_Text(pDX, IDC_EDIT_adcTime, adctime);
 }
 
 
 BEGIN_MESSAGE_MAP(AdcDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_EDIT_Y, &AdcDlg::OnBnClickedEditY)
+	ON_BN_CLICKED(IDC_adcTime, &AdcDlg::OnBnClickedadctime)
 END_MESSAGE_MAP()
 
 
@@ -62,7 +66,7 @@ void AdcDlg::OnBnClickedEditY()
 			}
 		}
 
-		User user;
+	
 		user.writeUser(adcName, adcPsw, adcEmail);
 		file.SeekToEnd();
 		file.Write(&user, sizeof(user));
@@ -90,9 +94,8 @@ void AdcDlg::OnBnClickedEditY()
 			}
 		}
 		
-		User user;
-		file.Seek(index * sizeof(user), CFile::begin);
-		file.Read(&user, sizeof(user));
+	
+
 		file.Seek(index * sizeof(user), CFile::begin);
 		user.writeUser(adcName, adcPsw, adcEmail);
 		file.Write(&user, sizeof(user));
@@ -121,9 +124,16 @@ BOOL AdcDlg::OnInitDialog()
 			u.readUser(n, p, e);
 			if (n == theApp.sName)
 			{
+				user = u;
 				adcEmail = u.email;
 				adcName = u.name;
 				adcPsw = u.psw;
+				for (int i = 0; i < u.gametime; i++)
+				{
+					CString str;
+					str.Format(L"%.2f", u.G[i].t);
+					adcList.AddString(str);
+				}
 				UpdateData(FALSE);
 				break;
 			}
@@ -136,4 +146,18 @@ BOOL AdcDlg::OnInitDialog()
 
 	return TRUE;  // return TRUE unless you set the focus to a control
 	// 异常: OCX 属性页应返回 FALSE
+}
+
+
+void AdcDlg::OnBnClickedadctime()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	UpdateData(TRUE);
+	CString str;
+	str.Format(L"%.2f", adctime);
+	adcList.AddString(str);
+	user.G[user.gametime].t = adctime;
+	user.gametime++;
+
+	
 }

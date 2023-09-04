@@ -32,6 +32,7 @@ BEGIN_MESSAGE_MAP(AdminDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_BN_ADD, &AdminDlg::OnBnClickedBnAdd)
 	ON_BN_CLICKED(IDC_BN_CHANGE, &AdminDlg::OnBnClickedBnChange)
 	ON_NOTIFY(NM_CLICK, IDC_LIST_ADMIN, &AdminDlg::OnNMClickListAdmin)
+	ON_BN_CLICKED(IDC_BN_DELETE, &AdminDlg::OnBnClickedBnDelete)
 END_MESSAGE_MAP()
 
 
@@ -137,4 +138,40 @@ void AdminDlg::OnNMClickListAdmin(NMHDR* pNMHDR, LRESULT* pResult)
 		
 	}
 	*pResult = 0;
+}
+
+
+void AdminDlg::OnBnClickedBnDelete()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	if (theApp.sName == L"")
+	{
+		MessageBox(L"未选择用户！ ");
+		return;
+	}
+	else
+	{
+		
+		adminList.DeleteAllItems();
+		CFile tfile(L"temp.dat", CFile::modeCreate || CFile::modeWrite);
+		CFile file(L"data.dat", CFile::modeRead);
+		User U;
+		int i = 0;
+		while (file.Read(&U, sizeof(U)) == sizeof(U)) {
+			if (U.name != theApp.sName)
+			{
+				CString mName, mPsw, mEmail, str;
+				U.readUser(mName, mPsw, mEmail);
+				adminList.InsertItem(i, mName);
+				adminList.SetItemText(i, 1, mPsw);
+				adminList.SetItemText(i, 2, mEmail);
+				i++;
+				tfile
+			}
+
+		}
+		// TODO:  在此添加额外的初始化
+		file.Close();
+
+	}
 }
