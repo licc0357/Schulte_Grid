@@ -29,4 +29,5 @@ public:
 	CString Email1;
 //	afx_msg void OnBnClickedregister();
 	virtual void OnOK();
+	virtual BOOL OnInitDialog();
 };
