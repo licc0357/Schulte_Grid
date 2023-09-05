@@ -184,7 +184,7 @@ HBRUSH login::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 	{
 		//MessageBox(_T("static text"));
 		pDC->SetBkMode(TRANSPARENT);
-		pDC->SetTextColor(RGB(0, 225, 225));
+		pDC->SetTextColor(RGB(0, 0, 0));
 		return HBRUSH(GetStockObject(HOLLOW_BRUSH));
 	}
 	// TODO:  Return a different brush if the default is not desired
