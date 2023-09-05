@@ -46,6 +46,14 @@
 #### 退出登录
 #### 修改信息
 # 参考资料
+[MFC-StudentsManage](http://gitee.com/TastSong/MFC-StudentsManage?_from=gitee_search)
 
+[High-speed Charting Control](http://blog.csdn.net/puzzleZHOU/article/details/117730586)
 
+[教你用代码奏响天空之城！](https://blog.csdn.net/weixin_45697774/article/details/106868403)
 
+[C++ Beep函数播放歌曲《千本樱》](https://blog.csdn.net/qq_53162179/article/details/124066525)
+
+[MFC编程入门教程之目录和总结](http://www.jizhuomi.com/software/257.html)
+
+[Git教程](https://www.liaoxuefeng.com/wiki/896043488029600)
