@@ -58,6 +58,8 @@ BOOL CpersonDlg::OnInitDialog()
 		str.Format(L"%d", i + 1);
 		m_List2.InsertItem(i, str);
 		str = U.G[i].clock.Format(L"%c");
+		if (U.G[i].clock == 0)
+			str = L"手动添加";
 		m_List2.SetItemText(i, 1, str);
 		str.Format(L"%.2f", U.G[i].t);
 		m_List2.SetItemText(i, 2, str);

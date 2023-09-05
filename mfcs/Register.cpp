@@ -95,3 +95,15 @@ void Register::OnOK()
 
 	//CDialogEx::OnOK();
 }
+
+
+BOOL Register::OnInitDialog()
+{
+	CDialogEx::OnInitDialog();
+	SetIcon(AfxGetApp()->LoadIcon(IDI_ICON1), TRUE);
+
+	// TODO:  在此添加额外的初始化
+
+	return TRUE;  // return TRUE unless you set the focus to a control
+	// 异常: OCX 属性页应返回 FALSE
+}

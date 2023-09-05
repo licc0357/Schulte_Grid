@@ -66,11 +66,12 @@ BOOL AdminDlg::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
 	SkinH_Attach();
+	SetIcon(AfxGetApp()->LoadIcon(IDI_ICON1),TRUE);
 	// TODO:  在此添加额外的初始化
 	adminList.SetExtendedStyle(adminList.GetExtendedStyle() | LVS_EX_FULLROWSELECT | LVS_EX_GRIDLINES);
 	adminList.InsertColumn(1, _T("用户名"), LVCFMT_CENTER, 100, 1);
-	adminList.InsertColumn(2, _T("密码"), LVCFMT_CENTER, 200, 2);
-	adminList.InsertColumn(3, _T("email"), LVCFMT_CENTER,200, 3);
+	adminList.InsertColumn(2, _T("密码"), LVCFMT_CENTER, 280, 2);
+	adminList.InsertColumn(3, _T("email"), LVCFMT_CENTER,300, 3);
 
 
 

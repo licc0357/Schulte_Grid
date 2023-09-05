@@ -40,6 +40,8 @@ BOOL DataDlg::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
     SkinH_Attach();
+    SetIcon(AfxGetApp()->LoadIcon(IDI_ICON1), TRUE);
+
 	// TODO:  在此添加额外的初始化
     // TODO: Add extra initialization here   
     CRect tabRect;   // 标签控件客户区的位置和大小   

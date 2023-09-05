@@ -294,6 +294,7 @@
   <ItemGroup>
     <Image Include="res\2.ico" />
     <Image Include="res\icon1.ico" />
+    <Image Include="res\logo.bmp" />
     <Image Include="res\mfcs.ico" />
     <Image Include="res\s.ico" />
   </ItemGroup>
