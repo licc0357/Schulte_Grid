@@ -92,7 +92,7 @@ void Register::OnBnClickedQregister()
 void Register::OnOK()
 {
 	// TODO: 在此添加专用代码和/或调用基类
-
+	OnBnClickedQregister();
 	//CDialogEx::OnOK();
 }
 

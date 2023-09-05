@@ -302,13 +302,20 @@ void CmfcsDlg::OnBnClickedStart()
 			pThread = AfxBeginThread(ThreadBgm, (LPVOID)NULL);
 
 		}
-		
+		ernum = 0;
 		//mciSendString(L"open ./bgm.mp3 alias bgm", NULL, 0, NULL);
 		//mciSendString(L"play bgm repeat", NULL, 0, NULL);
 		SetTimer(1, 1, NULL);
 		CFont* font=new CFont;
 		font->CreatePointFont(150, TEXT("微软雅黑"), NULL);
+		for (int n = 1029; n <= 1053; n++)
+		{
+			//id =1029~1053
+			CMFCButton* bnall = (CMFCButton*)GetDlgItem(n);
+			bnall->m_bTransparent = TRUE;
+			bnall->m_bDontUseWinXPTheme = FALSE;
 
+		}
 		GetDlgItem(IDC_START)->SetFont(font);
 		init_bn();
 		start = 1;
@@ -703,5 +710,12 @@ void CmfcsDlg::OnNbgm()
 void CmfcsDlg::OnDeuser()
 {
 	// TODO: 在此添加命令处理程序代码
+	if (MessageBox(L"确定要退出登录吗？", L"退出登录", MB_OKCANCEL) == IDOK)
+	{
+
+		MessageBox(L"退出成功");
+
+
+	}
 	CDialogEx::OnOK();
 }
