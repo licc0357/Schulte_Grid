@@ -116,6 +116,7 @@ BEGIN_MESSAGE_MAP(CmfcsDlg, CDialogEx)
 	ON_COMMAND(ID_tkzc, &CmfcsDlg::Ontkzc)
 	ON_COMMAND(ID_NBGM, &CmfcsDlg::OnNbgm)
 	ON_COMMAND(ID_DEUSER, &CmfcsDlg::OnDeuser)
+	ON_WM_ERASEBKGND()
 END_MESSAGE_MAP()
 
 
@@ -203,7 +204,20 @@ void CmfcsDlg::OnPaint()
 	}
 	else
 	{
-		CDialogEx::OnPaint();
+		CPaintDC dc(this);
+		CRect rect;
+		GetClientRect(&rect);
+		CDC dcMem;                                                 //用于缓冲作图的内存DC
+		CBitmap bmp;                                                //内存中承载临时图象的位图
+		dcMem.CreateCompatibleDC(&dc);              //依附窗口DC创建兼容内存DC
+		bmp.CreateCompatibleBitmap(&dc, rect.Width(), rect.Height());//创建兼容位图
+		dcMem.SelectObject(&bmp);                         //将位图选择进内存DC
+		dcMem.FillSolidRect(rect, dc.GetBkColor());//按原来背景填充客户区，不然会是黑色
+		//Draw()//你得重绘内容，使用dcMem      
+		dc.BitBlt(0, 0, rect.Width(), rect.Height(), &dcMem, 0, 0, SRCCOPY);//将内存DC上的图象拷贝到前台
+		dcMem.DeleteDC();                                      //删除DC
+		bmp.DeleteObject();                                       //删除位图
+		CDialog::OnPaint();
 	}
 }
 
@@ -377,8 +391,14 @@ void CmfcsDlg::on_num()
 			{
 				//id =1029~1053
 				CMFCButton* bnall = (CMFCButton*)GetDlgItem(n);
-				bnall->m_bTransparent = TRUE;
-				bnall->m_bDontUseWinXPTheme = FALSE;
+				if (bnall->m_bTransparent == FALSE)
+				{
+					bnall->m_bTransparent = TRUE;
+					bnall->m_bDontUseWinXPTheme = FALSE;
+					Invalidate();
+					//InvalidateRect(&rec, TRUE);
+				}
+				
 
 			}
 		}
@@ -388,7 +408,7 @@ void CmfcsDlg::on_num()
 		}
 
 		
-		Invalidate();
+		
 		num++;
 	}
 
@@ -538,7 +558,7 @@ void CmfcsDlg::OnDeFont()
 	// TODO: 在此添加命令处理程序代码
 	delete fn;
 	fn = new CFont;
-	fn->CreatePointFont(400, TEXT("宋体"), NULL);
+	fn->CreatePointFont(400, TEXT("微软雅黑"), NULL);
 	for (int i = 1029; i <= 1053; i++)
 	{
 		//id =1029~1053
@@ -718,4 +738,13 @@ void CmfcsDlg::OnDeuser()
 
 	}
 	CDialogEx::OnOK();
+}
+
+
+BOOL CmfcsDlg::OnEraseBkgnd(CDC* pDC)
+{
+	// TODO: 在此添加消息处理程序代码和/或调用默认值
+
+	return CDialogEx::OnEraseBkgnd(pDC);
+	//return TRUE;
 }

@@ -6,7 +6,6 @@
 #define IDD_ABOUTBOX                    100
 #define IDS_ABOUTBOX                    101
 #define IDD_MFCS_DIALOG                 102
-#define IDR_MAINFRAME                   128
 #define IDR_MENU1                       130
 #define IDR_MENUR                       133
 #define IDR_WAVE_BGM                    134

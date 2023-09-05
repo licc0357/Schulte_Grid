@@ -147,6 +147,7 @@ void login::OnCancel()
 BOOL login::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
+	SetIcon(AfxGetApp()->LoadIcon(IDI_ICON1), TRUE);
 
 	MoveWindow(0, 0, 800, 600);
 	// TODO:  在此添加额外的初始化
