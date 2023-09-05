@@ -117,6 +117,7 @@ BEGIN_MESSAGE_MAP(CmfcsDlg, CDialogEx)
 	ON_COMMAND(ID_NBGM, &CmfcsDlg::OnNbgm)
 	ON_COMMAND(ID_DEUSER, &CmfcsDlg::OnDeuser)
 	ON_WM_ERASEBKGND()
+	ON_COMMAND(ID_WUJIN, &CmfcsDlg::OnWujin)
 END_MESSAGE_MAP()
 
 
@@ -384,8 +385,9 @@ void CmfcsDlg::on_num()
 		PlaySound(MAKEINTRESOURCE(IDR_WAVE_BN), NULL, SND_RESOURCE | SND_ASYNC);
 
 		//CMFCButton* bn = (CMFCButton*)GetDlgItem(GetFocus()->GetDlgCtrlID());
-		if (difficulty != 2)
+		switch (difficulty)
 		{
+		case 0:case 1:
 			bn->EnableWindow(FALSE);
 			for (int n = 1029; n <= 1053; n++)
 			{
@@ -398,13 +400,17 @@ void CmfcsDlg::on_num()
 					Invalidate();
 					//InvalidateRect(&rec, TRUE);
 				}
-				
+
 
 			}
-		}
-		else
-		{
+			break;
+		case 2:
 			init_bn();
+			break;
+		case 3:
+			
+			WuJin();
+			break;
 		}
 
 		
@@ -416,14 +422,18 @@ void CmfcsDlg::on_num()
 	
 	if (num == 26)
 	{
-		endtime = clock();
-		times = (double)(endtime - starttime)/CLOCKS_PER_SEC;
-		times -= timez;
-		CString str;
-		str.Format(TEXT("共用时%.2f秒\n失误%d次"), times,ernum);
-		writeData();
-		stop();
-		MessageBox(str);
+		if (difficulty!=3)
+		{
+			endtime = clock();
+			times = (double)(endtime - starttime) / CLOCKS_PER_SEC;
+			times -= timez;
+			CString str;
+			str.Format(TEXT("共用时%.2f秒\n失误%d次"), times, ernum);
+			writeData();
+			stop();
+			MessageBox(str);
+		}
+
 	}
 }
 
@@ -585,7 +595,7 @@ void CmfcsDlg::OnHard()
 {
 	// TODO: 在此添加命令处理程序代码
 	difficulty = 1;
-	GetMenu()->GetSubMenu(0)->CheckMenuRadioItem(0, 2, 1, MF_BYPOSITION);
+	GetMenu()->GetSubMenu(0)->CheckMenuRadioItem(0, 3, 1, MF_BYPOSITION);
 
 }
 
@@ -606,7 +616,7 @@ void CmfcsDlg::OnNormal()
 {
 	// TODO: 在此添加命令处理程序代码
 	difficulty = 0;
-	GetMenu()->GetSubMenu(0)->CheckMenuRadioItem(0, 2, 0, MF_BYPOSITION);
+	GetMenu()->GetSubMenu(0)->CheckMenuRadioItem(0, 3, 0, MF_BYPOSITION);
 
 }
 
@@ -615,7 +625,7 @@ void CmfcsDlg::OnHardhard()
 {
 	// TODO: 在此添加命令处理程序代码
 	difficulty = 2;
-	GetMenu()->GetSubMenu(0)->CheckMenuRadioItem(0, 2, 2, MF_BYPOSITION);
+	GetMenu()->GetSubMenu(0)->CheckMenuRadioItem(0, 3, 2, MF_BYPOSITION);
 
 }
 
@@ -747,4 +757,45 @@ BOOL CmfcsDlg::OnEraseBkgnd(CDC* pDC)
 
 	return CDialogEx::OnEraseBkgnd(pDC);
 	//return TRUE;
+}
+
+
+void CmfcsDlg::OnWujin()
+{
+	// TODO: 在此添加命令处理程序代码
+	difficulty = 3;
+	GetMenu()->GetSubMenu(0)->CheckMenuRadioItem(0, 3, 3, MF_BYPOSITION);
+}
+
+
+void CmfcsDlg::WuJin()
+{
+	// TODO: 在此处添加实现代码.
+	/*CMFCButton* bn = (CMFCButton*)GetDlgItem(GetFocus()->GetDlgCtrlID());*/
+	int shunxu[25], luanxu[25], i, j;
+	CString s;
+	for (i = 0; i < 25; i++)
+	{
+		shunxu[i] = i + 1+num;
+	}
+	for (i = 25; i > 0; i--)
+	{
+		j = rand() % i;
+		luanxu[i - 1] = shunxu[j];
+		while (j < i - 1)
+		{
+			shunxu[j] = shunxu[j + 1];
+			j++;
+		}
+	}
+	i = 0;
+	for (int n = 1029; n <= 1053; n++)
+	{
+		//id =1029~1053
+		SetDlgItemText(n, (s.Format(L"%d", luanxu[i++]), s));
+
+	}
+	/*CString str;
+	str.Format(L"%d", num + 25);
+	bn->SetWindowTextW(str);*/
 }

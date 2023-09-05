@@ -86,4 +86,6 @@ public:
 	afx_msg void OnNbgm();
 	afx_msg void OnDeuser();
 	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
+	afx_msg void OnWujin();
+	void WuJin();
 };
