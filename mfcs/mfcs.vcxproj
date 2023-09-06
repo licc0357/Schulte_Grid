@@ -231,6 +231,7 @@
     <ClInclude Include="pch.h" />
     <ClInclude Include="Register.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="SPdlg.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="User.h" />
   </ItemGroup>
@@ -278,6 +279,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Register.cpp" />
+    <ClCompile Include="SPdlg.cpp" />
     <ClCompile Include="User.cpp" />
   </ItemGroup>
   <ItemGroup>

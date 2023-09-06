@@ -7,6 +7,7 @@
 #include "mfcs.h"
 #include "mfcsDlg.h"
 #include"Dlg3.h"
+#include"SPdlg.h"
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -70,9 +71,14 @@ BOOL CmfcsApp::InitInstance()
 	// TODO: 应适当修改该字符串，
 	// 例如修改为公司或组织名
 	SetRegistryKey(_T("应用程序向导生成的本地应用程序"));
+	//启动界面
+
+
 	login Log;
 	if (Log.DoModal() == IDOK)
 	{
+		SPdlg spdlg;
+		spdlg.DoModal();
 		CmfcsDlg dlg;
 		if (dlg.DoModal()==IDOK)
 		{
@@ -115,3 +121,10 @@ BOOL CmfcsApp::InitInstance()
 	return FALSE;
 }
 
+//BOOL CmfcsApp::PreTranslateMessage(MSG* pMsg)
+//{
+//	if (CSplashWnd::PreTranslateAppMessage(pMsg))
+//		return TRUE;
+//
+//	return CWinApp::PreTranslateMessage(pMsg);
+//}

@@ -12,7 +12,6 @@
 #include"User.h"
 #include"login.h"
 #include"Register.h"
-
 //皮肤库
 
 
@@ -32,6 +31,8 @@ public:
 // 重写
 public:
 	virtual BOOL InitInstance();
+
+	//BOOL PreTranslateMessage(MSG* pMsg);
 	
 
 

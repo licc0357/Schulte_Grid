@@ -118,6 +118,7 @@ BEGIN_MESSAGE_MAP(CmfcsDlg, CDialogEx)
 	ON_COMMAND(ID_DEUSER, &CmfcsDlg::OnDeuser)
 	ON_WM_ERASEBKGND()
 	ON_COMMAND(ID_WUJIN, &CmfcsDlg::OnWujin)
+	ON_WM_CREATE()
 END_MESSAGE_MAP()
 
 
@@ -126,7 +127,6 @@ END_MESSAGE_MAP()
 BOOL CmfcsDlg::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
-
 	SkinH_Attach();
 	//菜单栏
 	srand(time(0));
@@ -356,8 +356,8 @@ void CmfcsDlg::on_num()
 	int m_num = _ttoi(m_numT);
 	if (m_num != num)//错误变色
 	{
-		if (difficulty == 0)//普通难度
-		{
+		switch (difficulty)
+		{case 0:
 			PlaySound(MAKEINTRESOURCE(IDR_WAVE_ER), NULL, SND_RESOURCE | SND_ASYNC);
 
 			//CMFCButton* bn = (CMFCButton*)GetDlgItem(GetFocus()->GetDlgCtrlID());
@@ -368,14 +368,21 @@ void CmfcsDlg::on_num()
 			bn->m_bDontUseWinXPTheme = TRUE;
 			ernum++;
 			Invalidate();
-		}
-		else
-		{
+			break;
+		case 1: case 2: //
 			Beep(500, 300);
 			stop();
 			MessageBox(L"游戏失败！");
-			
+			break;
+		case 3:
+			Beep(500, 300);
+			stop();
+			CString str;
+			str.Format(L"游戏结束！\n您的成绩是%d", num-1);
+			MessageBox(str);
+			break;
 		}
+
 
 
 	}
@@ -528,14 +535,26 @@ void CmfcsDlg::OnTimer(UINT_PTR nIDEvent)
 	// TODO: 在此添加消息处理程序代码和/或调用默认值
 	if (!zanTing)
 	{
-		CMFCButton* bns = (CMFCButton*)GetDlgItem(IDC_START);
-		endtime = clock();
-		times = (double)(endtime - starttime) / CLOCKS_PER_SEC;
-		times -= timez;
-		CString str;
-		str.Format(TEXT("当前用时%.2f秒\n失误%d次"), times, ernum);
-		bns->SetWindowTextW(str);
-		CDialogEx::OnTimer(nIDEvent);
+		if (difficulty!=3)
+		{
+			CMFCButton* bns = (CMFCButton*)GetDlgItem(IDC_START);
+			endtime = clock();
+			times = (double)(endtime - starttime) / CLOCKS_PER_SEC;
+			times -= timez;
+			CString str;
+			str.Format(TEXT("当前用时%.2f秒\n失误%d次"), times, ernum);
+			bns->SetWindowTextW(str);
+			CDialogEx::OnTimer(nIDEvent);
+		}
+		else
+		{
+			CMFCButton* bns = (CMFCButton*)GetDlgItem(IDC_START);
+			CString str;
+			str.Format(TEXT("当前分数%d"), num-1);
+			bns->SetWindowTextW(str);
+			CDialogEx::OnTimer(nIDEvent);
+		}
+
 	}
 
 	
@@ -798,4 +817,16 @@ void CmfcsDlg::WuJin()
 	/*CString str;
 	str.Format(L"%d", num + 25);
 	bn->SetWindowTextW(str);*/
+}
+
+
+int CmfcsDlg::OnCreate(LPCREATESTRUCT lpCreateStruct)
+{
+	if (CDialogEx::OnCreate(lpCreateStruct) == -1)
+		return -1;
+
+	// TODO:  在此添加您专用的创建代码
+
+	//CSplashWnd::ShowSplashScreen(this);
+	return 0;
 }

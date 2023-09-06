@@ -88,4 +88,5 @@ public:
 	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
 	afx_msg void OnWujin();
 	void WuJin();
+	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
 };
