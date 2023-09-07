@@ -33,6 +33,7 @@ BEGIN_MESSAGE_MAP(SPdlg, CDialogEx)
 	ON_WM_PAINT()
 	ON_WM_CTLCOLOR()
 	ON_WM_TIMER()
+	ON_WM_CREATE()
 END_MESSAGE_MAP()
 
 
@@ -49,7 +50,7 @@ BOOL SPdlg::OnInitDialog()
 		GWL_EXSTYLE,
 		GetWindowLong(this->GetSafeHwnd(), GWL_EXSTYLE) | 0x80000);  //设定窗体使用扩展模式   
 	SetLayeredWindowAttributes(maskColor, 128, LWA_COLORKEY);
-	SetTimer(1,2000,NULL);
+	SetTimer(1,200,NULL);
 	
 	
 	return TRUE;  // return TRUE unless you set the focus to a control
@@ -74,6 +75,7 @@ void SPdlg::OnPaint()
 		img.Draw(dc1->m_hDC, CRect(0, 0, width, height));//图片控件2展示处理后的图片
 	CDialogEx::OnPaint();
 	// 获取含有alpha通道的位图
+
 	
 }
 
@@ -119,6 +121,32 @@ void SPdlg::TransparentPNG(CImage* png)
 void SPdlg::OnTimer(UINT_PTR nIDEvent)
 {
 	// TODO: 在此添加消息处理程序代码和/或调用默认值
-	CDialogEx::OnOK();
+
+	if (!open)
+	{
+		open = 1;
+		for (int i = 0; i < 100; i++)
+		{
+			//myProCtrl2->OffsetPos(1); //此句代码等同于下两句，以固定步长1更新显示，该功能也可以这样实现：myProCtrl2->SetPos(i); 
+			Progress.SetStep(1);
+			Progress.StepIt();
+			Sleep(10);
+		}
+
+		CDialogEx::OnOK();
+	}
+
 	CDialogEx::OnTimer(nIDEvent);
+}
+
+
+int SPdlg::OnCreate(LPCREATESTRUCT lpCreateStruct)
+{
+	if (CDialogEx::OnCreate(lpCreateStruct) == -1)
+		return -1;
+
+	// TODO:  在此添加您专用的创建代码
+
+
+	return 0;
 }

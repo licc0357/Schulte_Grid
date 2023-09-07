@@ -32,4 +32,6 @@ public:
 
 	afx_msg void OnTimer(UINT_PTR nIDEvent);
 	CProgressCtrl Progress;
+	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
+	BOOL open = 0;
 };

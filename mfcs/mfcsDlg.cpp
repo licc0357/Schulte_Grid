@@ -765,10 +765,10 @@ void CmfcsDlg::OnDeuser()
 	{
 
 		MessageBox(L"退出成功");
-
+		CDialogEx::OnOK();
 
 	}
-	CDialogEx::OnOK();
+	
 }
 
 

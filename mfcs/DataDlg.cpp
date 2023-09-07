@@ -38,7 +38,13 @@ END_MESSAGE_MAP()
 
 BOOL DataDlg::OnInitDialog()
 {
-	CDialogEx::OnInitDialog();
+    if (theApp.now_user.gametime == 0)
+    {
+        MessageBox(L"先完成游戏再查看吧");
+        CDialogEx::OnCancel();
+        return TRUE;
+    }
+    CDialogEx::OnInitDialog();
     SkinH_Attach();
     SetIcon(AfxGetApp()->LoadIcon(IDI_ICON1), TRUE);
 
