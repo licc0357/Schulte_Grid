@@ -130,7 +130,7 @@ void SPdlg::OnTimer(UINT_PTR nIDEvent)
 			//myProCtrl2->OffsetPos(1); //此句代码等同于下两句，以固定步长1更新显示，该功能也可以这样实现：myProCtrl2->SetPos(i); 
 			Progress.SetStep(1);
 			Progress.StepIt();
-			Sleep(10);
+			Sleep(40);
 		}
 
 		CDialogEx::OnOK();
