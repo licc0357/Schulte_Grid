@@ -31,4 +31,5 @@ public:
 	CRect rect;
 
 	afx_msg void OnTimer(UINT_PTR nIDEvent);
+	CProgressCtrl Progress;
 };

@@ -187,6 +187,7 @@
     <ClInclude Include="AdcDlg.h" />
     <ClInclude Include="AdminDlg.h" />
     <ClInclude Include="CCaption.h" />
+    <ClInclude Include="ChangeDlg.h" />
     <ClInclude Include="ChartCtrl_source\ChartAxis.h" />
     <ClInclude Include="ChartCtrl_source\ChartAxisLabel.h" />
     <ClInclude Include="ChartCtrl_source\ChartBalloonLabel.h" />
@@ -240,6 +241,7 @@
     <ClCompile Include="AdminDlg.cpp" />
     <ClCompile Include="beep.cpp" />
     <ClCompile Include="CCaption.cpp" />
+    <ClCompile Include="ChangeDlg.cpp" />
     <ClCompile Include="ChartCtrl_source\ChartAxis.cpp" />
     <ClCompile Include="ChartCtrl_source\ChartAxisLabel.cpp" />
     <ClCompile Include="ChartCtrl_source\ChartBarSerie.cpp" />

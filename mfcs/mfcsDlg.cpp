@@ -10,6 +10,7 @@
 #include"Dlg3.h"
 #include"DataDlg.h"
 #include"User.h"
+#include"ChangeDlg.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -119,6 +120,7 @@ BEGIN_MESSAGE_MAP(CmfcsDlg, CDialogEx)
 	ON_WM_ERASEBKGND()
 	ON_COMMAND(ID_WUJIN, &CmfcsDlg::OnWujin)
 	ON_WM_CREATE()
+	ON_COMMAND(ID_CH, &CmfcsDlg::OnCh)
 END_MESSAGE_MAP()
 
 
@@ -829,4 +831,13 @@ int CmfcsDlg::OnCreate(LPCREATESTRUCT lpCreateStruct)
 
 	//CSplashWnd::ShowSplashScreen(this);
 	return 0;
+}
+
+
+void CmfcsDlg::OnCh()
+{
+	// TODO: 在此添加命令处理程序代码
+	ChangeDlg cdlg;
+	cdlg.DoModal();
+
 }

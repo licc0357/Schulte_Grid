@@ -168,6 +168,9 @@
     <ClInclude Include="SPdlg.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="ChangeDlg.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="mfcs.cpp">
@@ -288,6 +291,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="SPdlg.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ChangeDlg.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

@@ -89,4 +89,5 @@ public:
 	afx_msg void OnWujin();
 	void WuJin();
 	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
+	afx_msg void OnCh();
 };

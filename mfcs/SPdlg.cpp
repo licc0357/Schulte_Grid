@@ -25,6 +25,7 @@ void SPdlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_P_SP, sp_p);
+	DDX_Control(pDX, IDC_PROGRESS1, Progress);
 }
 
 
