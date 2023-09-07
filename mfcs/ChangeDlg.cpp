@@ -82,6 +82,7 @@ void ChangeDlg::OnBnClickedChOk()
 
 BOOL ChangeDlg::OnInitDialog()
 {
+	SkinH_Attach();
 	CDialogEx::OnInitDialog();
 	CFile file(L"data.dat", CFile::modeRead);
 	// TODO: 在此添加控件通知处理程序代码

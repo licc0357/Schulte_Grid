@@ -374,6 +374,8 @@ void CmfcsDlg::on_num()
 		case 1: case 2: //
 			Beep(500, 300);
 			stop();
+			mciSendString(L"open lose.mp3 alias win", 0, 0, 0);
+			mciSendString(L"play lose", 0, 0, 0);//播放音乐
 			MessageBox(L"游戏失败！");
 			break;
 		case 3:
@@ -440,7 +442,15 @@ void CmfcsDlg::on_num()
 			str.Format(TEXT("共用时%.2f秒\n失误%d次"), times, ernum);
 			writeData();
 			stop();
+			mciSendString(L"open win.mp3 alias win", 0, 0, 0);
+			mciSendString(L"play win", 0, 0, 0);//播放音乐
 			MessageBox(str);
+			if (difficulty==0)
+			{
+				DataDlg datadlg;
+				datadlg.DoModal();
+			}
+
 		}
 
 	}
