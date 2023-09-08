@@ -9,6 +9,7 @@
 #include"AdminDlg.h"
 #include"CCaption.h"
 #include"CMyButton.h"
+#include"CPswDlg.h"
 
 
 // login 对话框
@@ -19,6 +20,8 @@ login::login(CWnd* pParent /*=nullptr*/)
 	: CDialogEx(IDD_DIALOG_LOGIN, pParent)
 	, Name(_T(""))
 	, Password(_T(""))
+	, RPsw(FALSE)
+	, Auto(FALSE)
 {
 
 }
@@ -34,6 +37,8 @@ void login::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_STATIC_CAPTION, m_staticCap);
 
 	DDX_Text(pDX, IDC_Password, Password);
+	DDX_Check(pDX, IDC_CHECK_PSW, RPsw);
+	DDX_Check(pDX, IDC_CHECK_AUTO, Auto);
 }
 
 
@@ -43,6 +48,8 @@ BEGIN_MESSAGE_MAP(login, CDialogEx)
 	ON_WM_CLOSE()
 	ON_WM_CTLCOLOR()
 
+//	ON_BN_CLICKED(IDC_MFCLINK1, &login::OnBnClickedMfclink1)
+ON_BN_CLICKED(IDC_BUTTON_LOST, &login::OnBnClickedButtonLost)
 END_MESSAGE_MAP()
 
 
@@ -75,6 +82,27 @@ void login::OnBnClickedLogin()
 			if (Name == mName && Password == mPsw)
 			{
 				theApp.now_user = user;
+				if (RPsw||Auto)
+				{
+					WritePrivateProfileString(L"User", L"name", mName, L"User.ini");
+					if (Auto)
+					{
+						WritePrivateProfileString(L"User", L"auto", L"1", L"User.ini");
+					}
+					else
+					{
+						WritePrivateProfileString(L"User", L"", L"", L"User.ini");
+
+					}
+					
+				}
+				else
+				{
+				   WritePrivateProfileString(L"User", L"name", L"", L"User.ini");
+
+				}
+
+
 				CDialogEx::OnOK();
 				islogin = 1;
 				break;
@@ -151,6 +179,35 @@ BOOL login::OnInitDialog()
 
 	MoveWindow(0, 0, 800, 600);
 	// TODO:  在此添加额外的初始化
+	CString str;
+	GetPrivateProfileString(L"User", L"name", L"", str.GetBuffer(MAX_PATH), MAX_PATH, L"User.ini");
+	Name = str;
+	if (str!=L"")
+	{
+		RPsw = 1;
+	}
+	CFile file(L"data.dat", CFile::modeRead);
+	User user;
+	while (file.Read(&user, sizeof(user)) == sizeof(user))
+	{
+		CString mName, mPsw, mEmail;
+		user.readUser(mName, mPsw, mEmail);
+		if (str == mName )
+		{
+			Password = mPsw;
+			break;
+		}
+
+	}
+	file.Close();
+	UpdateData(FALSE);
+	CString str1;
+	GetPrivateProfileString(L"User", L"auto", L"", str1.GetBuffer(MAX_PATH), MAX_PATH, L"User.ini");
+	if (str1==L"1")
+	{
+		OnBnClickedLogin();
+	}
+
 	CString strBmpPath = _T(".\\res\\Tigger.jpg");
 
 	CImage img;
@@ -200,4 +257,23 @@ HBRUSH login::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 
 	return hbr;
 
+}
+
+//void login::OnBnClickedMfclink1()
+//{
+	// TODO: 在此添加控件通知处理程序代码
+//	DePswDlg dedlg;
+//	dedlg.DoModal();
+//}
+
+
+void login::OnBnClickedButtonLost()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	DePswDlg dedlg;
+	if (dedlg.DoModal() == IDOK)
+	{
+		CPswDlg pswdlg;
+		pswdlg.DoModal();
+	}
 }

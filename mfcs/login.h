@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include "afxdialogex.h"
 #include"CCaption.h"
-
+#include"DePswDlg.h"
 
 // login 对话框
 
@@ -35,4 +35,8 @@ public:
 	CBrush m_bkBrush;
 	afx_msg HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
 	CCaption m_staticCap;
+	BOOL RPsw;
+	BOOL Auto;
+//	afx_msg void OnBnClickedMfclink1();
+	afx_msg void OnBnClickedButtonLost();
 };

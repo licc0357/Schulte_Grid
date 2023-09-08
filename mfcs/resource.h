@@ -27,6 +27,8 @@
 #define IDB_BITMAP1                     305
 #define IDB_LOGO                        305
 #define IDD_DIALOG_SP                   306
+#define IDD_DIALOG_DEPSW                308
+#define IDD_DIALOG_CPSW                 311
 #define IDC_START                       1025
 #define IDC_MFCBUTTON1                  1029
 #define IDC_MFCBUTTON3                  1030
@@ -84,6 +86,7 @@
 #define IDC_EDIT1                       1204
 #define IDC_EDIT_NAME                   1204
 #define IDC_CH_NAME                     1204
+#define IDC_EDIT_CAPTCHA                1204
 #define IDC_EDIT2                       1205
 #define IDC_EDIT_PSW                    1205
 #define IDC_CH_PSW                      1205
@@ -96,9 +99,12 @@
 #define IDC_BUTTON2                     1209
 #define IDC_EDIT_N                      1209
 #define IDC_CH_CL                       1209
+#define IDC_BUTTON_SEND                 1209
+#define IDC_BUTTON_LOST                 1209
 #define IDC_EDIT3                       1210
 #define IDC_EDIT_adcTime                1210
 #define IDC_CH_PSW2                     1210
+#define IDC_EDIT_DENAME                 1210
 #define IDC_BUTTON3                     1211
 #define IDC_adcTime                     1211
 #define IDC_LIST2                       1212
@@ -109,6 +115,12 @@
 #define IDC_ADMIN_PIC                   1215
 #define IDC_P_SP                        1216
 #define IDC_PROGRESS1                   1217
+#define IDC_CHECK_PSW                   1218
+#define IDC_CHECK_AUTO                  1219
+#define IDC_C_PSW                       1221
+#define IDC_C_PSW2                      1222
+#define IDC_EDIT_RCAPTCHA               1223
+#define IDC_BUTTON_RSEND                1224
 #define ID_32771                        32771
 #define ID_ZanTing                      32772
 #define ID_32773                        32773
@@ -152,9 +164,9 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        308
+#define _APS_NEXT_RESOURCE_VALUE        313
 #define _APS_NEXT_COMMAND_VALUE         32816
-#define _APS_NEXT_CONTROL_VALUE         1218
+#define _APS_NEXT_CONTROL_VALUE         1225
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif
