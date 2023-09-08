@@ -773,7 +773,7 @@ void CmfcsDlg::OnDeuser()
 	// TODO: 在此添加命令处理程序代码
 	if (MessageBox(L"确定要退出登录吗？", L"退出登录", MB_OKCANCEL) == IDOK)
 	{
-
+		WritePrivateProfileString(L"User", L"auto", L"", L"User.ini");
 		MessageBox(L"退出成功");
 		CDialogEx::OnOK();
 

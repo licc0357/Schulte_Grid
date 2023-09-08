@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include "afxdialogex.h"
-
+#include <regex>
 
 // Register 对话框
 
@@ -30,4 +30,11 @@ public:
 //	afx_msg void OnBnClickedregister();
 	virtual void OnOK();
 	virtual BOOL OnInitDialog();
+	CButton Rsend;
+//	CEdit Rcap;
+	char Code[7];//验证码
+	int t = 60;
+	afx_msg void OnBnClickedButtonRsend();
+	afx_msg void OnTimer(UINT_PTR nIDEvent);
+	CString Ca;
 };

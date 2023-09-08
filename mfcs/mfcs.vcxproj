@@ -221,9 +221,11 @@
     <ClInclude Include="ChartCtrl_source\PointsOrdering.h" />
     <ClInclude Include="CMyButton.h" />
     <ClInclude Include="CpersonDlg.h" />
+    <ClInclude Include="CPswDlg.h" />
     <ClInclude Include="C_chartDlg.h" />
     <ClInclude Include="C_rankDlg.h" />
     <ClInclude Include="DataDlg.h" />
+    <ClInclude Include="DePswDlg.h" />
     <ClInclude Include="Dlg3.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="login.h" />
@@ -267,9 +269,11 @@
     <ClCompile Include="ChartCtrl_source\ChartXYSerie.cpp" />
     <ClCompile Include="CMyButton.cpp" />
     <ClCompile Include="CpersonDlg.cpp" />
+    <ClCompile Include="CPswDlg.cpp" />
     <ClCompile Include="C_chartDlg.cpp" />
     <ClCompile Include="C_rankDlg.cpp" />
     <ClCompile Include="DataDlg.cpp" />
+    <ClCompile Include="DePswDlg.cpp" />
     <ClCompile Include="Dlg3.cpp" />
     <ClCompile Include="login.cpp" />
     <ClCompile Include="mfcs.cpp" />
