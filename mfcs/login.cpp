@@ -176,8 +176,8 @@ BOOL login::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
 	SetIcon(AfxGetApp()->LoadIcon(IDI_ICON1), TRUE);
-
-	MoveWindow(0, 0, 800, 600);
+	SkinH_Attach();
+	//MoveWindow(0, 0, 800, 600);
 	// TODO:  在此添加额外的初始化
 	CString str;
 	GetPrivateProfileString(L"User", L"name", L"", str.GetBuffer(MAX_PATH), MAX_PATH, L"User.ini");
@@ -219,7 +219,10 @@ BOOL login::OnInitDialog()
 	bmpTmp.Attach(img.Detach());
 
 	m_bkBrush.CreatePatternBrush(&bmpTmp);
-	m_staticCap.Init(400, 300, 105, 30);//调整标题位置
+	CFont* fc=new CFont;
+	fc->CreatePointFont(200, L"隶书");
+
+	m_staticCap.SetFont(fc);
 	return TRUE;  // return TRUE unless you set the focus to a control
 	// 异常: OCX 属性页应返回 FALSE
 }

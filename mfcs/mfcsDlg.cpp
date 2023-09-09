@@ -310,18 +310,19 @@ void CmfcsDlg::OnBnClickedStart()
 	if (!start)
 	{
 		//播放bgm
-		if (bgm)
+		if (bgm==1)
 		{
 			pThread = AfxBeginThread(ThreadBgm, (LPVOID)1);
 
-		}else
+		}
+		else if (bgm==0)
 		{
 			pThread = AfxBeginThread(ThreadBgm, (LPVOID)NULL);
 
 		}
 		ernum = 0;
-		//mciSendString(L"open ./bgm.mp3 alias bgm", NULL, 0, NULL);
-		//mciSendString(L"play bgm repeat", NULL, 0, NULL);
+		mciSendString(L"open ./bgm.mp3 alias bgm", NULL, 0, NULL);
+		mciSendString(L"play bgm repeat", NULL, 0, NULL);
 		SetTimer(1, 1, NULL);
 		CFont* font=new CFont;
 		font->CreatePointFont(150, TEXT("微软雅黑"), NULL);
@@ -372,14 +373,18 @@ void CmfcsDlg::on_num()
 			Invalidate();
 			break;
 		case 1: case 2: //
-			Beep(500, 300);
 			stop();
-			mciSendString(L"open lose.mp3 alias win", 0, 0, 0);
-			mciSendString(L"play lose", 0, 0, 0);//播放音乐
+			mciSendString(L"stop bgm", 0, 0, 0);
+
+			PlaySound(MAKEINTRESOURCE(IDR_WAVE_LOSE), NULL, SND_RESOURCE | SND_ASYNC);
+
 			MessageBox(L"游戏失败！");
 			break;
 		case 3:
-			Beep(500, 300);
+
+			mciSendString(L"stop bgm", 0, 0, 0);
+			PlaySound(MAKEINTRESOURCE(IDR_WAVE_LOSE), NULL, SND_RESOURCE | SND_ASYNC);
+
 			stop();
 			CString str;
 			str.Format(L"游戏结束！\n您的成绩是%d", num-1);
@@ -442,8 +447,7 @@ void CmfcsDlg::on_num()
 			str.Format(TEXT("共用时%.2f秒\n失误%d次"), times, ernum);
 			writeData();
 			stop();
-			mciSendString(L"open win.mp3 alias win", 0, 0, 0);
-			mciSendString(L"play win", 0, 0, 0);//播放音乐
+			PlaySound(MAKEINTRESOURCE(IDR_WAVE_WIN), NULL, SND_RESOURCE | SND_ASYNC);
 			MessageBox(str);
 			if (difficulty==0)
 			{
@@ -493,7 +497,12 @@ void CmfcsDlg::OnZanting()
 {
 	//右键暂停
 	// TODO: 在此添加命令处理程序代码
-	pThread->SuspendThread();
+	mciSendString(L"pause bgm", 0, 0, 0);
+	if (pThread)
+	{
+		pThread->SuspendThread();
+
+	}
 	zanTing = 1;
 	zstart = clock();
 	dis_bn();
@@ -514,7 +523,8 @@ void CmfcsDlg::OnUpdateZanting(CCmdUI* pCmdUI)
 void CmfcsDlg::OnKaishi()
 {
 	// TODO: 在此添加命令处理程序代码
-	
+
+
 
 	
 	for (int i = 1029; i <= 1053; i++)
@@ -535,6 +545,7 @@ void CmfcsDlg::OnKaishi()
 	}
 	Beep(800, 200);
 	MessageBox(TEXT("开始成功！"));
+	mciSendString(L"resume bgm", 0, 0, 0);
 	pThread->ResumeThread();
 	zanTing = 0;
 	zend = clock();
@@ -635,8 +646,19 @@ void CmfcsDlg::OnHard()
 void CmfcsDlg::stop()
 {
 	// TODO: 在此处添加实现代码.
+	mciSendString(L"stop bgm", 0, 0, 0);
+
 	KillTimer(1);
-	pThread->SuspendThread();
+	if (pThread)
+	{
+		pThread->SuspendThread();
+
+	}
+	for (int i = 1029; i <= 1053; i++)
+	{
+		//id =1029~1053
+		GetDlgItem(i)->EnableWindow(FALSE);
+	}
 	times = timez = 0;
 	start = 0;
 	GetDlgItem(IDC_START)->SetWindowTextW(L"开始");
@@ -666,6 +688,7 @@ void CmfcsDlg::OnHardhard()
 void CmfcsDlg::OnShowdata()
 {
 	// TODO: 在此添加命令处理程序代码
+	stop();
 	DataDlg ddlg;
 	ddlg.DoModal();
 }
@@ -733,6 +756,10 @@ void CmfcsDlg::Onqby()
 
 		pThread = AfxBeginThread(ThreadBgm, (LPVOID)NULL);
 	}
+	else
+	{
+		pThread = AfxBeginThread(ThreadBgm, (LPVOID)NULL);
+	}
 
 
 }
@@ -746,6 +773,10 @@ void CmfcsDlg::Ontkzc()
 	{
 		pThread->SuspendThread();
 
+		pThread = AfxBeginThread(ThreadBgm, (LPVOID)1);
+	}
+	else
+	{
 		pThread = AfxBeginThread(ThreadBgm, (LPVOID)1);
 	}
 
@@ -774,6 +805,7 @@ void CmfcsDlg::OnDeuser()
 	if (MessageBox(L"确定要退出登录吗？", L"退出登录", MB_OKCANCEL) == IDOK)
 	{
 		WritePrivateProfileString(L"User", L"auto", L"", L"User.ini");
+		stop();
 		MessageBox(L"退出成功");
 		CDialogEx::OnOK();
 
@@ -847,6 +879,7 @@ int CmfcsDlg::OnCreate(LPCREATESTRUCT lpCreateStruct)
 void CmfcsDlg::OnCh()
 {
 	// TODO: 在此添加命令处理程序代码
+	stop();
 	ChangeDlg cdlg;
 	cdlg.DoModal();
 

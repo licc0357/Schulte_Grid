@@ -162,9 +162,6 @@
     <ClInclude Include="CCaption.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="CMyButton.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="SPdlg.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -293,9 +290,6 @@
     <ClCompile Include="CCaption.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="CMyButton.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="SPdlg.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -333,6 +327,9 @@
     <None Include="res\wave1.bin">
       <Filter>资源文件</Filter>
     </None>
+    <None Include="res\wave2.bin">
+      <Filter>资源文件</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\mfcs.ico">
@@ -363,6 +360,15 @@
       <Filter>资源文件</Filter>
     </Media>
     <Media Include="res\bn2.wav">
+      <Filter>资源文件</Filter>
+    </Media>
+    <Media Include="res\lose.wav">
+      <Filter>资源文件</Filter>
+    </Media>
+    <Media Include="res\win.wav">
+      <Filter>资源文件</Filter>
+    </Media>
+    <Media Include="res\load.wav">
       <Filter>资源文件</Filter>
     </Media>
   </ItemGroup>
