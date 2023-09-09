@@ -333,6 +333,9 @@
     <None Include="res\wave1.bin">
       <Filter>资源文件</Filter>
     </None>
+    <None Include="res\wave2.bin">
+      <Filter>资源文件</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\mfcs.ico">
@@ -363,6 +366,15 @@
       <Filter>资源文件</Filter>
     </Media>
     <Media Include="res\bn2.wav">
+      <Filter>资源文件</Filter>
+    </Media>
+    <Media Include="res\lose.wav">
+      <Filter>资源文件</Filter>
+    </Media>
+    <Media Include="res\win.wav">
+      <Filter>资源文件</Filter>
+    </Media>
+    <Media Include="res\load.wav">
       <Filter>资源文件</Filter>
     </Media>
   </ItemGroup>

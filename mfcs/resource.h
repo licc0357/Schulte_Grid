@@ -29,6 +29,10 @@
 #define IDD_DIALOG_SP                   306
 #define IDD_DIALOG_DEPSW                308
 #define IDD_DIALOG_CPSW                 311
+#define IDR_WAVE_LOSE                   313
+#define IDR_WAVE_WIN                    314
+#define IDR_WAVE2                       316
+#define IDR_WAVE_LOAD                   316
 #define IDC_START                       1025
 #define IDC_MFCBUTTON1                  1029
 #define IDC_MFCBUTTON3                  1030
@@ -164,7 +168,7 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        313
+#define _APS_NEXT_RESOURCE_VALUE        317
 #define _APS_NEXT_COMMAND_VALUE         32816
 #define _APS_NEXT_CONTROL_VALUE         1225
 #define _APS_NEXT_SYMED_VALUE           101

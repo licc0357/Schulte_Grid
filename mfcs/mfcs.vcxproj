@@ -298,6 +298,7 @@
     <None Include="ChartCtrl_source\ChartSerieBase.inl" />
     <None Include="res\mfcs.rc2" />
     <None Include="res\wave1.bin" />
+    <None Include="res\wave2.bin" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\2.ico" />
@@ -312,6 +313,9 @@
     <Media Include="res\bn.wav" />
     <Media Include="res\bn2.wav" />
     <Media Include="res\er.wav" />
+    <Media Include="res\load.wav" />
+    <Media Include="res\lose.wav" />
+    <Media Include="res\win.wav" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

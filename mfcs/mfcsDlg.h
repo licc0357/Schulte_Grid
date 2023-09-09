@@ -80,7 +80,7 @@ public:
 	CWinThread* pThread=NULL;//bgm线程
 	afx_msg void OnClose();
 	afx_msg void Onqby();
-	 int bgm=0;
+	 int bgm=2;
 	 int* p = &bgm;
 	afx_msg void Ontkzc();
 	afx_msg void OnNbgm();

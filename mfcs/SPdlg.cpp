@@ -43,6 +43,7 @@ END_MESSAGE_MAP()
 BOOL SPdlg::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
+	PlaySound(MAKEINTRESOURCE(IDR_WAVE_LOAD), NULL, SND_RESOURCE | SND_ASYNC);
 
 	// TODO:  在此添加额外的初始化
 	COLORREF maskColor = RGB(255, 255, 255);   //掩码颜色  
@@ -130,7 +131,7 @@ void SPdlg::OnTimer(UINT_PTR nIDEvent)
 			//myProCtrl2->OffsetPos(1); //此句代码等同于下两句，以固定步长1更新显示，该功能也可以这样实现：myProCtrl2->SetPos(i); 
 			Progress.SetStep(1);
 			Progress.StepIt();
-			Sleep(40);
+			Sleep(30);
 		}
 
 		CDialogEx::OnOK();
