@@ -25,7 +25,7 @@ void DataDlg::DoDataExchange(CDataExchange* pDX)
 {
     CDialogEx::DoDataExchange(pDX);
     DDX_Control(pDX, IDC_TAB1, m_tab);
-    DDX_Control(pDX, IDC_STATIC_S, ss);
+
 }
 
 

@@ -61,7 +61,7 @@ void Register::OnBnClickedQregister()
 	UpdateData(TRUE);
 	CString str;
 	str = Code;
-	if (!Ca == str)
+	if (Ca != str)
 	{
 		MessageBox(L"验证码错误！");
 		return;
@@ -115,6 +115,7 @@ void Register::OnOK()
 BOOL Register::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
+	srand(time(0));
 	SkinH_Attach();
 	SetIcon(AfxGetApp()->LoadIcon(IDI_ICON1), TRUE);
 

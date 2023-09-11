@@ -347,6 +347,12 @@
     <Image Include="res\logo.bmp">
       <Filter>资源文件</Filter>
     </Image>
+    <Image Include="res\bitmap2.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="Tigger.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Media Include="res\bgm.wav">

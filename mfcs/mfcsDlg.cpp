@@ -546,7 +546,11 @@ void CmfcsDlg::OnKaishi()
 	Beep(800, 200);
 	MessageBox(TEXT("开始成功！"));
 	mciSendString(L"resume bgm", 0, 0, 0);
-	pThread->ResumeThread();
+	if (pThread)
+	{
+		pThread->ResumeThread();
+	}
+	
 	zanTing = 0;
 	zend = clock();
 	timez += (double)(zend - zstart) / CLOCKS_PER_SEC;

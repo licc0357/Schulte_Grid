@@ -53,7 +53,7 @@ BOOL SPdlg::OnInitDialog()
 		GetWindowLong(this->GetSafeHwnd(), GWL_EXSTYLE) | 0x80000);  //设定窗体使用扩展模式   
 	SetLayeredWindowAttributes(maskColor, 128, LWA_COLORKEY);
 	SetTimer(1,200,NULL);
-	
+	MoveWindow(0, 0, 1000, 1100);
 	
 	return TRUE;  // return TRUE unless you set the focus to a control
 	// 异常: OCX 属性页应返回 FALSE
@@ -70,9 +70,9 @@ void SPdlg::OnPaint()
 	if (!img.IsNull()) img.Destroy();
 	CString imgPath1 = _T("logo.png");
 	img.Load(imgPath1);
-	height = img.GetHeight();
-	width = img.GetWidth();
-	//TransparentPNG(&img);                    //调用透明化处理函数
+	height =800;
+	width = 1000;
+	TransparentPNG(&img);                    //调用透明化处理函数
 	if (!img.IsNull())
 		img.Draw(dc1->m_hDC, CRect(0, 0, width, height));//图片控件2展示处理后的图片
 	CDialogEx::OnPaint();
