@@ -194,7 +194,10 @@ void Dlg3::on_num()
 			CString str;
 			str.Format(TEXT("共用时%.2f秒\n失误%d次"), times, ernum);
 			KillTimer(1);
+			mciSendString(L"bgm stop", NULL, 0, NULL);
+			start = 0;
 			MessageBox(str);
+			GetDlgItem(IDC_3START)->SetWindowTextW(L"开始");
 
 		}
 	}

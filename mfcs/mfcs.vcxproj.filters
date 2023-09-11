@@ -162,9 +162,6 @@
     <ClInclude Include="CCaption.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="CMyButton.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="SPdlg.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -293,9 +290,6 @@
     <ClCompile Include="CCaption.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="CMyButton.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="SPdlg.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -351,6 +345,12 @@
       <Filter>资源文件</Filter>
     </Image>
     <Image Include="res\logo.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\bitmap2.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="Tigger.bmp">
       <Filter>资源文件</Filter>
     </Image>
   </ItemGroup>

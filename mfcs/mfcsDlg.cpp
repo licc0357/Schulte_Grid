@@ -546,7 +546,11 @@ void CmfcsDlg::OnKaishi()
 	Beep(800, 200);
 	MessageBox(TEXT("开始成功！"));
 	mciSendString(L"resume bgm", 0, 0, 0);
-	pThread->ResumeThread();
+	if (pThread)
+	{
+		pThread->ResumeThread();
+	}
+	
 	zanTing = 0;
 	zend = clock();
 	timez += (double)(zend - zstart) / CLOCKS_PER_SEC;
@@ -647,7 +651,7 @@ void CmfcsDlg::stop()
 {
 	// TODO: 在此处添加实现代码.
 	mciSendString(L"stop bgm", 0, 0, 0);
-
+	zanTing = 0;
 	KillTimer(1);
 	if (pThread)
 	{
@@ -688,6 +692,7 @@ void CmfcsDlg::OnHardhard()
 void CmfcsDlg::OnShowdata()
 {
 	// TODO: 在此添加命令处理程序代码
+	stop();
 	DataDlg ddlg;
 	ddlg.DoModal();
 }

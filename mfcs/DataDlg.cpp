@@ -23,8 +23,9 @@ DataDlg::~DataDlg()
 
 void DataDlg::DoDataExchange(CDataExchange* pDX)
 {
-	CDialogEx::DoDataExchange(pDX);
-	DDX_Control(pDX, IDC_TAB1, m_tab);
+    CDialogEx::DoDataExchange(pDX);
+    DDX_Control(pDX, IDC_TAB1, m_tab);
+
 }
 
 
@@ -38,6 +39,7 @@ END_MESSAGE_MAP()
 
 BOOL DataDlg::OnInitDialog()
 {
+
     if (theApp.now_user.gametime == 0)
     {
         MessageBox(L"先完成游戏再查看吧");
@@ -47,7 +49,10 @@ BOOL DataDlg::OnInitDialog()
     CDialogEx::OnInitDialog();
     SkinH_Attach();
     SetIcon(AfxGetApp()->LoadIcon(IDI_ICON1), TRUE);
-
+    CFont* f = new CFont;
+    f->CreatePointFont(160, L"微软雅黑");
+    ss.SetFont(f);
+    UpdateData(FALSE);
 	// TODO:  在此添加额外的初始化
     // TODO: Add extra initialization here   
     CRect tabRect;   // 标签控件客户区的位置和大小   

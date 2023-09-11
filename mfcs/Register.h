@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include "afxdialogex.h"
 #include <regex>
-
+#include<ctime>
 // Register 对话框
 
 class Register : public CDialogEx

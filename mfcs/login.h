@@ -34,9 +34,11 @@ public:
 	virtual BOOL OnInitDialog();
 	CBrush m_bkBrush;
 	afx_msg HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
-	CCaption m_staticCap;
+//	CCaption m_staticCap;
 	BOOL RPsw;
 	BOOL Auto;
 //	afx_msg void OnBnClickedMfclink1();
 	afx_msg void OnBnClickedButtonLost();
+	afx_msg void OnBnClickedCheckPsw();
+	afx_msg void OnBnClickedCheckAuto();
 };

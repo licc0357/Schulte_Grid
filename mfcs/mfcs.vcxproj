@@ -219,7 +219,6 @@
     <ClInclude Include="ChartCtrl_source\ChartTitle.h" />
     <ClInclude Include="ChartCtrl_source\ChartXYSerie.h" />
     <ClInclude Include="ChartCtrl_source\PointsOrdering.h" />
-    <ClInclude Include="CMyButton.h" />
     <ClInclude Include="CpersonDlg.h" />
     <ClInclude Include="CPswDlg.h" />
     <ClInclude Include="C_chartDlg.h" />
@@ -267,7 +266,6 @@
     <ClCompile Include="ChartCtrl_source\ChartSurfaceSerie.cpp" />
     <ClCompile Include="ChartCtrl_source\ChartTitle.cpp" />
     <ClCompile Include="ChartCtrl_source\ChartXYSerie.cpp" />
-    <ClCompile Include="CMyButton.cpp" />
     <ClCompile Include="CpersonDlg.cpp" />
     <ClCompile Include="CPswDlg.cpp" />
     <ClCompile Include="C_chartDlg.cpp" />
@@ -302,10 +300,12 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\2.ico" />
+    <Image Include="res\bitmap2.bmp" />
     <Image Include="res\icon1.ico" />
     <Image Include="res\logo.bmp" />
     <Image Include="res\mfcs.ico" />
     <Image Include="res\s.ico" />
+    <Image Include="Tigger.bmp" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="res\bgm.wav" />

@@ -13,7 +13,6 @@
 
 
 // login 对话框
-
 IMPLEMENT_DYNAMIC(login, CDialogEx)
 
 login::login(CWnd* pParent /*=nullptr*/)
@@ -34,7 +33,7 @@ void login::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
 	DDX_Text(pDX, IDC_Name, Name);
-	DDX_Control(pDX, IDC_STATIC_CAPTION, m_staticCap);
+	//DDX_Control(pDX, IDC_STATIC_CAPTION, m_staticCap);
 
 	DDX_Text(pDX, IDC_Password, Password);
 	DDX_Check(pDX, IDC_CHECK_PSW, RPsw);
@@ -50,6 +49,8 @@ BEGIN_MESSAGE_MAP(login, CDialogEx)
 
 //	ON_BN_CLICKED(IDC_MFCLINK1, &login::OnBnClickedMfclink1)
 ON_BN_CLICKED(IDC_BUTTON_LOST, &login::OnBnClickedButtonLost)
+ON_BN_CLICKED(IDC_CHECK_PSW, &login::OnBnClickedCheckPsw)
+ON_BN_CLICKED(IDC_CHECK_AUTO, &login::OnBnClickedCheckAuto)
 END_MESSAGE_MAP()
 
 
@@ -169,15 +170,23 @@ void login::OnOK()
 void login::OnCancel()
 {
 	// TODO: 在此添加专用代码和/或调用基类
-
+	exit(1);
 	//CDialogEx::OnCancel();
 }
 BOOL login::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
 	SetIcon(AfxGetApp()->LoadIcon(IDI_ICON1), TRUE);
+	SkinH_Detach();
 
-	MoveWindow(0, 0, 800, 600);
+	CFont* fs=new CFont;
+	fs->CreatePointFont(100, L"华文琥珀");
+	GetDlgItem(IDC_STATIC1)->SetFont(fs);
+	GetDlgItem(IDC_STATIC2)->SetFont(fs);
+	GetDlgItem(IDC_STATIC3)->SetFont(fs);
+	GetDlgItem(IDC_STATIC4)->SetFont(fs);
+
+	MoveWindow(0, 0, 960, 540);
 	// TODO:  在此添加额外的初始化
 	CString str;
 	GetPrivateProfileString(L"User", L"name", L"", str.GetBuffer(MAX_PATH), MAX_PATH, L"User.ini");
@@ -185,22 +194,23 @@ BOOL login::OnInitDialog()
 	if (str!=L"")
 	{
 		RPsw = 1;
-	}
-	CFile file(L"data.dat", CFile::modeRead);
-	User user;
-	while (file.Read(&user, sizeof(user)) == sizeof(user))
-	{
-		CString mName, mPsw, mEmail;
-		user.readUser(mName, mPsw, mEmail);
-		if (str == mName )
+		CFile file(L"data.dat", CFile::modeRead);
+		User user;
+		while (file.Read(&user, sizeof(user)) == sizeof(user))
 		{
-			Password = mPsw;
-			break;
-		}
+			CString mName, mPsw, mEmail;
+			user.readUser(mName, mPsw, mEmail);
+			if (str == mName)
+			{
+				Password = mPsw;
+				break;
+			}
 
+		}
+		file.Close();
+		UpdateData(FALSE);
 	}
-	file.Close();
-	UpdateData(FALSE);
+
 	CString str1;
 	GetPrivateProfileString(L"User", L"auto", L"", str1.GetBuffer(MAX_PATH), MAX_PATH, L"User.ini");
 	if (str1==L"1")
@@ -208,18 +218,18 @@ BOOL login::OnInitDialog()
 		OnBnClickedLogin();
 	}
 
-	CString strBmpPath = _T(".\\res\\Tigger.jpg");
+	//CString strBmpPath = _T("Tigger.jpg");
 
-	CImage img;
+	//CImage img;
 
-	img.Load(strBmpPath);
+	//img.Load(strBmpPath);
 
 	CBitmap bmpTmp;
 
-	bmpTmp.Attach(img.Detach());
+	bmpTmp.LoadBitmapW(IDB_BITMAP_LOGIN);
 
 	m_bkBrush.CreatePatternBrush(&bmpTmp);
-	m_staticCap.Init(400, 300, 105, 30);//调整标题位置
+	//m_staticCap.Init(400, 300, 105, 30);//调整标题位置
 	return TRUE;  // return TRUE unless you set the focus to a control
 	// 异常: OCX 属性页应返回 FALSE
 }
@@ -238,26 +248,41 @@ HBRUSH login::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 		return m_bkBrush;
 	}
 
-	if (pWnd->GetDlgCtrlID() == (IDC_STATIC_CAPTION))
-	{
-		//MessageBox(_T("static text"));
-		pDC->SetBkMode(TRANSPARENT);
-		pDC->SetTextColor(RGB(0, 0, 0));
-		return HBRUSH(GetStockObject(HOLLOW_BRUSH));
-	}
-	// TODO:  Return a different brush if the default is not desired
-	if (pWnd->GetDlgCtrlID() == (IDC_STATIC))
-	{
-		//MessageBox(_T("static text"));
-		pDC->SetBkMode(TRANSPARENT);
-		pDC->SetTextColor(RGB(0, 225, 225));
-		return HBRUSH(GetStockObject(HOLLOW_BRUSH));
-	}
 
+	// TODO:  Return a different brush if the default is not desired
+	if (pWnd->GetDlgCtrlID() == (IDC_STATIC1))
+	{
+		//MessageBox(_T("static text"));
+		pDC->SetBkMode(TRANSPARENT);
+		pDC->SetTextColor(RGB(25, 25, 112));
+		return HBRUSH(GetStockObject(HOLLOW_BRUSH));
+	}
+	if (pWnd->GetDlgCtrlID() == (IDC_STATIC2))
+	{
+		//MessageBox(_T("static text"));
+		pDC->SetBkMode(TRANSPARENT);
+		pDC->SetTextColor(RGB(25,25,112));
+		return HBRUSH(GetStockObject(HOLLOW_BRUSH));
+	}	
+	if (pWnd->GetDlgCtrlID() == (IDC_STATIC3))
+	{
+		//MessageBox(_T("static text"));
+		pDC->SetBkMode(TRANSPARENT);
+		pDC->SetTextColor(RGB(25, 25, 112));
+		return HBRUSH(GetStockObject(HOLLOW_BRUSH));
+	}	
+	if (pWnd->GetDlgCtrlID() == (IDC_STATIC4))
+	{
+		//MessageBox(_T("static text"));
+		pDC->SetBkMode(TRANSPARENT);
+		pDC->SetTextColor(RGB(25, 25, 112));
+		return HBRUSH(GetStockObject(HOLLOW_BRUSH));
+	}
 
 	return hbr;
 
 }
+
 
 //void login::OnBnClickedMfclink1()
 //{
@@ -276,4 +301,16 @@ void login::OnBnClickedButtonLost()
 		CPswDlg pswdlg;
 		pswdlg.DoModal();
 	}
+}
+
+
+void login::OnBnClickedCheckPsw()
+{
+	// TODO: 在此添加控件通知处理程序代码
+}
+
+
+void login::OnBnClickedCheckAuto()
+{
+	// TODO: 在此添加控件通知处理程序代码
 }
