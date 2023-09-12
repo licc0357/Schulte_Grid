@@ -49,6 +49,9 @@
 #### 修改信息
 # 参考资料
 音效和美术素材来源于网络
+
+[vc++ 利用jmail组件收发邮件](https://blog.csdn.net/shixin_0125/article/details/105346339)
+
 [MFC-StudentsManage](http://gitee.com/TastSong/MFC-StudentsManage?_from=gitee_search)
 
 [High-speed Charting Control](http://blog.csdn.net/puzzleZHOU/article/details/117730586)
