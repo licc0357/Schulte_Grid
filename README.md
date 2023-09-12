@@ -1,7 +1,7 @@
  
 # MFC舒尔特方格
 
-
+使用前请先安装JMail
 # 项目简介
 ![输入图片说明](logo.png)
 舒尔特方格 (Schulte Grid) 是在一张方形卡片上画上 1cm*1cm 的 25 个方格，格子内任意填写上阿拉伯数字 1 ~ 25 等共 25 个数字。训练时，要求被测者用手指按 1 ~ 25 的顺序依次指出其位置，同时诵读出声，施测者一旁记录所用时间。数完 25 个数字所用时间越短，注意力水平越高。
@@ -48,6 +48,7 @@
 #### 退出登录
 #### 修改信息
 # 参考资料
+音效和美术素材来源于网络
 [MFC-StudentsManage](http://gitee.com/TastSong/MFC-StudentsManage?_from=gitee_search)
 
 [High-speed Charting Control](http://blog.csdn.net/puzzleZHOU/article/details/117730586)
